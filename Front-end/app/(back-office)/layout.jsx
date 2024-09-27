@@ -4,8 +4,9 @@ import Sidebar from '@/Components/dashboard/SideBarComponents/Sidebar'
 export default function Layout({children}) {
   return (
     <div className='flex'>
-     <Sidebar/>
-      <main className=' sm:ml-60 ml-0 sm:block w-full bg-slate-100 min-h-screen'> 
+     <Sidebar className='bg-slate-900'/>
+     
+      <main className=' ml-0 sm:block w-full bg-slate-100 min-h-screen'> 
         <Header/>
         {children}</main>
      

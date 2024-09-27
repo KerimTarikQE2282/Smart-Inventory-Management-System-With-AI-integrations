@@ -11,7 +11,7 @@ const columns=['name','phone','email','PaymentTerms']
   return (
     <div>
     {/* { header } */}
-  <TabelNavBar link='/dashboard/inventory/Supplier/new/' title='Suppliers'/>
+  <TabelNavBar link='/recieving/Supplier/new/' title='Suppliers'/>
     {/* { Table  } */}
     <div className='my-4 p-8'>
     <DataTable Data={ Suppliers} resourceTitle={'Supplier'} columns={columns}/>

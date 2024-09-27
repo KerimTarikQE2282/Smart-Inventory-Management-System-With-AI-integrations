@@ -15,11 +15,10 @@ import UserManagement from './UserManagement'
 
 
 function Sidebar() {
- 
 
   return (
  
-       <div className='  flex-col w-60 min-h-screen bg-slate-800  text-slate-50 justify-between fixed hidden sm:flex'> 
+       <div className='  flex-col w-60 min-h-screen bg-slate-900  text-white justify-between fixed  sm:flex mr-0' > 
        {
         /*top part*/
        }
@@ -78,7 +77,6 @@ function Sidebar() {
        <button className='flex flex-col bg-slate-950 justify-end w-full items-center'>
         
        <div className='flex space-x-2  items-center py-3 px-2'>
-        <ChevronLeft/>
      
        </div>
        </button>

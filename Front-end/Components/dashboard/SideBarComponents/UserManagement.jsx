@@ -39,7 +39,7 @@ function SalesSideBarComponent() {
       <CollapsibleTrigger  className='flex items-center space-x-2 p-2 ' onClick={()=>setInventoryopen(!inventoryOpen)}>
         <User2 className='w-4 h-4'/>
         
-        <span> User Management</span>
+        <span className="whitespace-nowrap"> User's </span>
         { inventoryOpen ? <ChevronDown className='relative  left-[0.6vw] w-4 h-4'/>: < ChevronRight className='relative left-[0.6vw]  w-4 h-4'/>}
          </CollapsibleTrigger>
         <CollapsibleContent >
