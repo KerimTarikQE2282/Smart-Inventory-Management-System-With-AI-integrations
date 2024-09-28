@@ -4,7 +4,7 @@ import SalesOverview from '../Components/SalesOverview'
 
 export default function Dashboard() {
   return (
-    <div>
+    <div className=''>
       
       <SalesOverview/>
     </div>

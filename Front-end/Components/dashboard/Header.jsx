@@ -72,8 +72,8 @@ function header({user}) {
           {User?.username}
          
         </button>
-        <Image src={image || User?.profilePicture} alt="" className="rounded-full w-8 h-8 ml-5 border border-slate-900" />
-        <button className=" bg-red-700 rounded-lg flex flex-row text-white  py-1 px-4" onClick={handleLogout}>
+        <Image src={image || User?.profilePicture} alt="" className="rounded-full w-10 h-10 ml-5 border border-slate-900" />
+        <button className="  rounded-lg flex flex-row   py-1 px-4" onClick={handleLogout}>
        <LogOut/>  <span>Log Out</span> 
         </button>
       </div>

@@ -1,4 +1,8 @@
-const Warehouse =require('../../models/Store/warehouse')
+const Warehouse =require('../../models/Store/warehouse');
+const WareHouseItem = require('../../models/Store/WareHouseItem');
+const InventoryAdjustments=require('../../models/Store/WareHouseItem')  
+const { StatusCodes } = require('http-status-codes');
+const ItemModel=require('../../models/Store/item')
 
 const getAllWarehouses = async (req, res) => {
   try {
@@ -95,5 +99,43 @@ const searchWareHouse = async (req, res) => {
   res.status(200).json(warehouses);
 
 };
+const getAllContainedWareHouseItems = async (req, res) => {
+ 
+    const wareHouseId = req.params.wareHouseId;
 
-module.exports = { getAllWarehouses, createWarehouse, updateWarehouse, deleteWarehouse, getWarehouseById, searchWareHouse };
+
+    // Fetch items that belong to the specific warehouse
+    const wareHouseItems = await InventoryAdjustments.find({ });
+    const matchingItems = wareHouseItems.filter(item => {
+      const itemWentTo = item.itemWentTo;
+
+   
+
+      return itemWentTo[itemWentTo.length - 1] .equals(wareHouseId);
+    });
+    const newMatchingItems = await Promise.all(
+      matchingItems.map(async (item) => {
+        const itemName = await ItemModel.findById(item.item);
+        return { ...item, itemName: itemName.title }; // Add the title from itemName
+      })
+    );
+    
+
+    var myItemDisplacement={}
+
+      for (var i=0;i<newMatchingItems.length;i++){
+          if(myItemDisplacement[newMatchingItems[i].itemName]==null){
+            myItemDisplacement[newMatchingItems[i].itemName]=1
+
+          }
+          else{
+            myItemDisplacement[newMatchingItems[i].itemName]=myItemDisplacement[newMatchingItems[i].itemName]+1
+          }
+      }
+    // Send a successful response with the warehouse items
+    res.status(StatusCodes.OK).json(myItemDisplacement);
+
+};
+
+
+module.exports = { getAllWarehouses, createWarehouse, updateWarehouse, deleteWarehouse, getWarehouseById, searchWareHouse ,getAllContainedWareHouseItems};

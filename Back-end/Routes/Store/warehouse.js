@@ -7,7 +7,8 @@ const {
   createWarehouse,
   updateWarehouse,
   deleteWarehouse,
-  searchWareHouse
+  searchWareHouse,
+  getAllContainedWareHouseItems
 } = require('../../Controllers/StoreControllers/warehouse');
 
 router.get('/', getAllWarehouses);
@@ -16,4 +17,5 @@ router.post('/', createWarehouse);
 router.patch('/:id', updateWarehouse);
 router.delete('/:id', deleteWarehouse);
 router.post('/search', searchWareHouse);
+router.get('/wareHouseItems/:wareHouseId', getAllContainedWareHouseItems);
 module.exports = router;
