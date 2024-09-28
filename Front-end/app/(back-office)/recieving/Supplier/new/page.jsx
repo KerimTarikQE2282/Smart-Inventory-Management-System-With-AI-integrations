@@ -1,6 +1,7 @@
 "use client";
 import { useForm } from "react-hook-form";
 import React from 'react';
+import { connect } from 'react-redux'; // Import connect for Redux
 import FormHeader from '../../../../../Components/dashboard/FormHeaders';
 import TextInput from "@/Components/FormInputs/TextInput";
 import SubumitButton from "@/Components/FormInputs/SubumitButton";
@@ -8,7 +9,7 @@ import TextAreaInputs from "@/Components/FormInputs/TextAreaInputs";
 import { makePUTApiRequest, makePOSTApiRequest } from '../../../../../actions/StoreGeneralCrudRequests';
 import { useRouter } from 'next/navigation'; // Import the router
 
-export default function NewSupplier(props) {
+function NewSupplier(props) {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [loading, setLoading] = React.useState(false);
   const router = useRouter(); // Initialize the router
@@ -25,20 +26,22 @@ export default function NewSupplier(props) {
     notes = ''
   } = props.initialData || {};
   
-  const isUpdate = props.isupdate;
+  const isUpdate = props.isUpdate || false;
+  console.log("🚀 ==> file: page.jsx:29 ==> NewSupplier ==> isUpdate:", isUpdate);
 
   async function onSubmit(data) {
     setLoading(true); // Set loading state
 
     try {
       if (isUpdate) {
-        await makePUTApiRequest(`Supplier/${props.initialData.id}`, setLoading, data, 'Supplier');
+        await props.makePUTApiRequest(`Supplier/${props.initialData.id}`, setLoading, data, 'Supplier');
       } else {
-        await makePOSTApiRequest('Supplier', setLoading, data, 'Supplier');
+        await props.makePOSTApiRequest('supplier', setLoading, data, 'supplier');
+        console.log("that block is reached");
       }
       
       // Navigate after the API call is successful
-      // router.replace('/dashboard/inventory/WareHouse');
+      router.replace('/dashboard/inventory/WareHouse');
     } catch (error) {
       console.error("API Error:", error); // Log the error for debugging
     } finally {
@@ -66,3 +69,17 @@ export default function NewSupplier(props) {
     </div>
   );
 }
+
+// Map state to props
+const mapStateToProps = (state) => ({
+  // Map relevant state to props if necessary
+});
+
+// Map dispatch to props
+const mapDispatchToProps = {
+  makePUTApiRequest,
+  makePOSTApiRequest
+};
+
+// Connect the component with Redux
+export default connect(mapStateToProps, mapDispatchToProps)(NewSupplier);
