@@ -2,10 +2,11 @@ const StatusCodes=require('http-status-codes')
 const GeneralSaleModel=require('../../models/Sale/GeneralSale')
 const { BadRequestError } = require('../../errors');
 const OrderItem = require('../../models/Sale/OrderItem');
-const CustomerModel=require('../../models/Store/Customer')
+  
 
+const CustomerModel=require('../../models/Sale/Customer')
+  
 
-//Get All Fully Payed Sales  
 const getAllPayedGeneralSales = async (req, res) => {
    
       const AllGeneralSales = await GeneralSaleModel.find(

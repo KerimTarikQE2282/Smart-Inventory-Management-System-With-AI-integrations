@@ -39,7 +39,8 @@ export default withUt({
       },
     },
     plugins: [require("tailwindcss-animate"),
-              require("@tailwindcss/forms")
+              require("@tailwindcss/forms"),
+              require('tailwind-scrollbar')
     ],
    
 });
