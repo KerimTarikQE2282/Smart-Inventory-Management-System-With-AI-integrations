@@ -27,8 +27,10 @@ function CreateItemFrom({categories,units,brands,suppliers,initialData={},isupda
   async function onSubmit(data){
     if(isupdate){
       // Update Request 
+      const myCompleteItemData={...data,imagesUrl:imageUrl}
+
       try {
-       await makePUTApiRequest(`items/${initialData._id}`,setLoading,data,'Items')
+       await makePUTApiRequest(`items/${initialData._id}`,setLoading,myCompleteItemData,'Items')
          done=true
          if(done==true){
           router.replace('/dashboard/inventory/Items')
@@ -36,17 +38,19 @@ function CreateItemFrom({categories,units,brands,suppliers,initialData={},isupda
       } catch (error) {
         console.log(error)
       }
-     
+      router.replace('/storing/items')
+
     }
     else{
       console.log('item adddd')
+      console.log("completed item data",data,imageUrl)
+      const myCompleteItemData={...data,imagesUrl:imageUrl}
       //data.imageURL=imageUrl
-      await makePOSTApiRequest('items',setLoading,data,'Items')
+      await makePOSTApiRequest('items',setLoading,myCompleteItemData,'Items')
       setImageUrl('');
+      router.replace('/storing/items')
     }
-      console.log("🚀 ==> file: CreateItemFrom.jsx:44 ==> onSubmit ==> data:", data);
 
-      // console.log("🚀 ==> file: CreateItemFrom.jsx:47 ==> onSubmit ==> data:", data);
 
   
   }
@@ -94,7 +98,7 @@ function CreateItemFrom({categories,units,brands,suppliers,initialData={},isupda
       <TextAreaInputs  label="Item Description " name="description"  type="text" width='full'   register={register} defaultValue={initialData.title} errors={errors}/>
 
       <TextAreaInputs  label="Notes " name="ItemNotes"  type="text" width='full'   register={register} defaultValue={initialData.title} errors={errors}/>
-        <ImageInput label="Item " imageURL={imageUrl} setImageUrl={setImageUrl} />
+        <ImageInput label="Item Image " imageURL={imageUrl} setImageUrl={setImageUrl} />
         </div>
        <SubumitButton title={`${isupdate?'Updated Item':'New item'}`}  isLoading={loading}/>
 

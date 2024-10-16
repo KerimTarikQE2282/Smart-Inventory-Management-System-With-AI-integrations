@@ -10,7 +10,7 @@ const Store = require('../../models/Store/Shop');
 
 
 
-
+// Send Item to store
 const Send_Item_to_Store=async (req,res)=>{
 
   const {item,From_warehouse,To_WareHouse,Carton_number,from_Carton_Number,to_Carton_Number}=req.body;

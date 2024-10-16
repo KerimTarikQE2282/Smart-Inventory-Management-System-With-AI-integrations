@@ -12,7 +12,7 @@ function Inventory() {
       title: "All Customers",
       icon: <User strokeWidth=".5px" className='w-36 h-36' color='#f25944' />,
       phrase: "Create instances of Customers to track .",
-      Buttontext: "New Item Group",
+      Buttontext: "View All Customers",
       link: "/dashboard/inventory/itemGroups",
       linkTitle: 'Item Groups',  // Adjusted to match the title
       enabled: true
@@ -23,64 +23,21 @@ function Inventory() {
     phrase: "Create instances of Customers to track .",
     Buttontext: "New Item Group",
     link: "/dashboard/inventory/itemGroups",
-    linkTitle: 'Item Groups',  // Adjusted to match the title
+    linkTitle: 'View All Sales Orders',  // Adjusted to match the title
     enabled: true
 },
-{
-    title: "Invoice",
-    icon: <BadgeDollarSign strokeWidth=".5px" className='w-36 h-36' color='#30c55e' />,
-    phrase: "Create instances of Customers to track .",
-    Buttontext: "New Item Group",
-    link: "/dashboard/inventory/itemGroups",
-    linkTitle: 'Item Groups',  // Adjusted to match the title
-    enabled: true
-},
-{
-    title: "Sales Reciepts",
-    icon: <ReceiptIcon strokeWidth=".5px" className='w-36 h-36'  />,
-    phrase: "Create instances of Customers to track .",
-    Buttontext: "New Item Group",
-    link: "/dashboard/inventory/itemGroups",
-    linkTitle: 'Item Groups',  // Adjusted to match the title
-    enabled: true
-},
-{
-    title: "Payment reciepts",
-    icon: <CheckCheck strokeWidth=".5px" className='w-36 h-36' color='#f25944' />,
-    phrase: "Create instances of Customers to track .",
-    Buttontext: "New Item Group",
-    link: "/dashboard/inventory/itemGroups",
-    linkTitle: 'Item Groups',  // Adjusted to match the title
-    enabled: true
-},
-{
-    title: "Sales Returns",
-    icon: <ReceiptRussianRuble strokeWidth=".5px" className='w-36 h-36' color='#eab308' />,
-    phrase: "Create instances of Customers to track .",
-    Buttontext: "New Item Group",
-    link: "/dashboard/inventory/itemGroups",
-    linkTitle: 'Item Groups',  // Adjusted to match the title
-    enabled: true
-},
+
+
+
 {
     title: "Credits",
     icon: <Bookmark strokeWidth=".5px" className='w-36 h-36' color='#f25944' />,
     phrase: "Create instances of Customers to track .",
     Buttontext: "New Item Group",
     link: "/dashboard/inventory/itemGroups",
-    linkTitle: 'Item Groups',  // Adjusted to match the title
+    linkTitle: 'View All Credits',  // Adjusted to match the title
     enabled: true
-},
-
-{
-    title: "Unpayed Credits",
-    icon: <CircleOff strokeWidth=".5px" className='w-36 h-36' color='#30c55e' />,
-    phrase: "Create instances of Customers to track .",
-    Buttontext: "New Item Group",
-    link: "/dashboard/inventory/itemGroups",
-    linkTitle: 'Item Groups',  // Adjusted to match the title
-    enabled: true
-},
+}
 
   
   ]
@@ -114,7 +71,7 @@ function Inventory() {
 
   return (
     <div>
-      <FixedHeader/>
+      <FixedHeader title={"Selling"}/>
       <div className='grid grid-cols-1 lg:grid-cols-3 py-16 px-28 gap-8'>
      
       

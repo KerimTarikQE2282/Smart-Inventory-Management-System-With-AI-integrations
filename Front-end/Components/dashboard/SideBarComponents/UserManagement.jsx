@@ -12,7 +12,7 @@ function SalesSideBarComponent() {
     const inventoryLinks=[
       {
         name:"All",
-        link:"/recieving",
+        link:"/usermanagement",
         icon:<Wallpaper className='w-4 h-4'/>
       },
       {

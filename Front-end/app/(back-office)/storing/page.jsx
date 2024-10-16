@@ -8,21 +8,13 @@ import React from 'react'
 function Inventory() {
  
   const ItemComponents=[
-    {
-      title: "Item Groups",
-      icon: <Boxes strokeWidth=".5px" className='w-36 h-36' color='#f25944' />,
-      phrase: "Create multiple variants of the same item using item groups.",
-      Buttontext: "New Item Group",
-      link: "/dashboard/inventory/itemGroups",
-      linkTitle: 'Item Groups',  // Adjusted to match the title
-      enabled: true
-  },
+  
   {
       title: "Items",
       icon: <Box strokeWidth=".5px" className='w-36 h-36' color='#eab308' />,
       phrase: "Create standalone items and services that you will buy or sell.",
-      Buttontext: "New Item",  // Adjusted to match the title
-      link: "/dashboard/inventory/items/new",
+      Buttontext: "Items page",  // Adjusted to match the title
+      link: "/storing/items",
       linkTitle: 'Items',  // Adjusted to match the title
       enabled: true
   },
@@ -30,8 +22,8 @@ function Inventory() {
       title: "Categories",
       icon: <Codesandbox strokeWidth=".5px" className='w-36 h-36' color='#30c55e' />,
       phrase: "Bundle different items together and sell them as a kit.",
-      Buttontext: "New Categories of Items",  // Adjusted to match the title
-      link: "/dashboard/inventory/Categories/new",
+      Buttontext: " Categories page",  // Adjusted to match the title
+      link: "/storing/Categories",
       linkTitle: 'Categories',  // Adjusted to match the title
       enabled: true
   },
@@ -39,8 +31,8 @@ function Inventory() {
     title: "Price Lists",
     icon: <ScrollText strokeWidth=".5px" className='w-36 h-36' />,
     phrase: "Tweak your item prices for specific contacts or transactions.",
-    Buttontext: "New Price List",  // Adjusted to match the title
-    link: "/dashboard/inventory/pricelists/new",
+    Buttontext: "Price Lists",  // Adjusted to match the title
+    link: "/storing/pricelists",
     linkTitle: 'Price Lists',  // Adjusted to match the title
     enabled: true
 },
@@ -48,8 +40,8 @@ function Inventory() {
       title: "Adjustments",
       icon: <Edit strokeWidth=".5px" className='w-36 h-36' color='#f25944' />,
       phrase: "Make adjustments to your inventory.",
-      Buttontext: "New Adjustments",  // Adjusted to match the title
-      link: "/dashboard/inventory/adjutstments",
+      Buttontext: "Adjustments page",  // Adjusted to match the title
+      link: "/storing/adjustments",
       linkTitle: 'Adjustments',  // Adjusted to match the title
       enabled: true
   },
@@ -58,8 +50,8 @@ function Inventory() {
       title: "Brands",
       icon: <Building2 strokeWidth=".5px" className='w-36 h-36' color='#eab308' />,
       phrase: "Manage your brands and products.",
-      Buttontext: "New Brand",  // Adjusted to match the title
-      link: "/dashboard/inventory/Brands",
+      Buttontext: "Brand's page",  // Adjusted to match the title
+      link: "/storing/Brands",
       linkTitle: 'Brands',  // Adjusted to match the title
       enabled: true
   },
@@ -67,8 +59,8 @@ function Inventory() {
       title: "Warehouses",
       icon: <Warehouse strokeWidth=".5px" className='w-36 h-36' color='#30c55e' />,
       phrase: "Manage your warehouses and inventory storage.",
-      Buttontext: "New Warehouse",  // Adjusted to match the title
-      link: "/dashboard/inventory/WareHouse",
+      Buttontext: "Warehouse page",  // Adjusted to match the title
+      link: "/storing/WareHouse",
       linkTitle: 'Warehouses',  // Adjusted to match the title
       enabled: true
   },
@@ -76,8 +68,8 @@ function Inventory() {
       title: "Units",
       icon: <Ruler strokeWidth=".5px" className='w-36 h-36' />,
       phrase: "Manage your units of measurement.",
-      Buttontext: "New Unit",  // Adjusted to match the title
-      link: "/dashboard/inventory/units",
+      Buttontext: "Unit page",  // Adjusted to match the title
+      link: "/storing/unit",
       linkTitle: 'Units',  // Adjusted to match the title
       enabled: true
   }
@@ -113,7 +105,7 @@ function Inventory() {
 
   return (
     <div>
-      <FixedHeader/>
+      <FixedHeader title="Storing"/>
       <div className='grid grid-cols-1 lg:grid-cols-3 py-16 px-28 gap-8'>
      
       

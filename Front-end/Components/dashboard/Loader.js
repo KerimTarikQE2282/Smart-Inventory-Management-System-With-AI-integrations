@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import ClipLoader from "react-spinners/ClipLoader";
+import GridLoader from "react-spinners/GridLoader";
 
 const override = {
   display: "block",
@@ -14,15 +14,16 @@ function App() {
   const [color, setColor] = useState("#193549");
 
   return (
-    <div className="ml-[35vw] mt-[10vh]">
+    <div className="mt-10">
       
      
 
-      <ClipLoader
+      <GridLoader
+
         color={color}
         loading={loading}
         css={override}  // Correct prop name
-        size={150}
+        size={25}
         aria-label="Loading Spinner"
         data-testid="GridLoader"
       />

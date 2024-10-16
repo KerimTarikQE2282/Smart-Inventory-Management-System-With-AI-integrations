@@ -14,7 +14,7 @@ function Inventory() {
       phrase: "Create instances of Customers to track .",
       Buttontext: "New Item Group",
       link: "/dashboard/inventory/itemGroups",
-      linkTitle: 'Item Groups',  // Adjusted to match the title
+      linkTitle: 'View All Saved Purchase orders',  // Adjusted to match the title
       enabled: true
   },
   {
@@ -23,7 +23,7 @@ function Inventory() {
     phrase: "Create instances of Customers to track .",
     Buttontext: "New Item Group",
     link: "/dashboard/inventory/itemGroups",
-    linkTitle: 'Item Groups',  // Adjusted to match the title
+    linkTitle: 'View All Supplier Data',  // Adjusted to match the title
     enabled: true
 },
  
@@ -60,7 +60,7 @@ function Inventory() {
 
   return (
     <div>
-      <FixedHeader/>
+      <FixedHeader title="Recieving"/>
       <div className='grid grid-cols-1 lg:grid-cols-3 py-16 px-28 gap-8'>
      
       
