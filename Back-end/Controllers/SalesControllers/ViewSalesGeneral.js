@@ -2,9 +2,11 @@ const StatusCodes=require('http-status-codes')
 const GeneralSaleModel=require('../../models/Sale/GeneralSale')
 const { BadRequestError } = require('../../errors');
 const OrderItem = require('../../models/Sale/OrderItem');
+  
+
 const CustomerModel=require('../../models/Sale/Customer')
   
-  
+
 const getAllPayedGeneralSales = async (req, res) => {
    
       const AllGeneralSales = await GeneralSaleModel.find(
@@ -30,7 +32,7 @@ const getAllPayedGeneralSales = async (req, res) => {
     
   };
 
-
+//Get all fully Unpayed Sales
   const getAllunPayedGeneralSales = async (req, res) => {
    
     const AllGeneralSales = await GeneralSaleModel.find(
@@ -56,6 +58,7 @@ const getAllPayedGeneralSales = async (req, res) => {
     res.status(StatusCodes.OK).json({'GeneralSales':Sales} );
   
 };
+//Get Specific Unpayed General Sales
 const getAllunPayedGeneralSalesByOrderNumber = async (req, res) => {
    
   const AllGeneralSales = await GeneralSaleModel.find(
@@ -83,7 +86,7 @@ const getAllunPayedGeneralSalesByOrderNumber = async (req, res) => {
 
 };
   
-
+//get general Sales by order Number
 const getGeneralSalesByOrderNumber = async (req, res) => {
   const { OrderNumber } = req.params;
 

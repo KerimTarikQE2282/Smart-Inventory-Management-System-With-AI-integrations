@@ -5,6 +5,8 @@ const { BadRequestError } = require('../../errors/')
 
 //TODO  dont forget to specify created by after specifyint 
 const addItem = async (req,res) => {
+  console.log("🚀 ==> file: items.js:8 ==> addItem ==> req:", req);
+
   const myNewItem=await Item.create(req.body)
   res.status(StatusCodes.OK).json(myNewItem)
 }

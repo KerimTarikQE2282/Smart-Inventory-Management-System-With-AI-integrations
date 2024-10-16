@@ -2,11 +2,11 @@ import { AlignJustify, HelpCircle, LayoutGrid, List, ListChecksIcon, ListIcon, M
 import Link from 'next/link'
 import React from 'react'
 
-function FixedHeader() {
+function FixedHeader(props) {
   return (
     <div className='flex justify-between items-center bg-white py-5 px-4'>
-      <button className='text-2xl'>
-        All items
+      <button className='text-2xl' style={{ marginLeft: '5vw' }}>
+        {`All ${props.title}  Data`}
       </button>
       <div className='flex items-center space-x-10'>
       {/*new*/}

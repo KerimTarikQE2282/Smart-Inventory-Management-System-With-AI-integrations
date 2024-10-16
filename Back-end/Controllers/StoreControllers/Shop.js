@@ -12,8 +12,8 @@ const getAllStores = async (req, res) => {
 
 const createStore = async (req, res) => {
   try {
-    const { StoreName, StoreLocation, StoreDescription, StoreType } = req.body;
-    const newStore = await Store.create({ StoreName, StoreLocation, StoreDescription, StoreType });
+    const { StoreName, StoreLocation,Capacity, StoreDescription, StoreType } = req.body;
+    const newStore = await Store.create({ StoreName, StoreLocation, StoreDescription, StoreType ,Capacity});
     res.status(201).json({ newStore });
   } catch (error) {
     console.log(error);

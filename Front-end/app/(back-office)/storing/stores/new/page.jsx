@@ -40,10 +40,12 @@ function NewStore({initialData,isupdate,makePOSTApiRequest,makePUTApiRequest}) {
      }
      else{
        setLoading(true)
- 
+       console.log("🚀 ==> file: page.jsx:47 ==> onSubmit ==> data:", data);
+
        await makePOSTApiRequest('stores',setLoading,data,'Stores')
        router.replace('/storing/stores')
      }
+
  
    }
 
@@ -55,8 +57,9 @@ function NewStore({initialData,isupdate,makePOSTApiRequest,makePUTApiRequest}) {
       <form onSubmit={handleSubmit(onSubmit)} className='w-full max-w-4xl p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700 mx-auto my-3'>
         <div className='grid gap-4 sm:grid-cols-2 sm:gap-6'>
          <TextInput label="Store Name" name="StoreName" defaultValue={initialData?.StoreName}  type="text" width='full'   register={register}  errors={errors}/>
-        
+
          <TextInput label="Store Location" name="StoreLocation" defaultValue={initialData?.StoreLocation}  type="text" width='full'   register={register}  errors={errors}/>
+         <TextInput label="Store Capacity" name="Capacity" defaultValue={initialData?.StoreName}  type="number" width='full'   register={register}  errors={errors}/>
 
          <TextAreaInputs  label="Store Description " name="StoreDescription"    type="text" width='full'  defaultValue={initialData?.StoreDescription
  || ''}   register={register}  errors={errors}/>

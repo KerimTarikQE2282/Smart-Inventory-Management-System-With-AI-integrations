@@ -4,13 +4,14 @@ const { BadRequestError } = require('../../errors');
 const OrderItem = require('../../models/Sale/OrderItem');
 
 //TODO  dont forget to specify created by after specifyint 
+// Add General sales
 const addGeneralSale= async (req,res) => {
 console.log("🚀 ==> file: GeneralSale.js:9 ==> addGeneralSale ==> req:", req.body);
 
 
     const now = new Date();
     const year = now.getFullYear();
-    const month = now.getMonth() + 1; // Months are zero-based (0-11)
+    const month = now.getMonth() + 1; 
     const day = now.getDate();
     const {orderNumber,customer,orderStatus,billingStatus,orderTotal,paymentMethod,salesRepresentative,Order_item,payedAmount}=req.body;
 
@@ -70,7 +71,7 @@ console.log("🚀 ==> file: GeneralSale.js:9 ==> addGeneralSale ==> req:", req.b
 
 
 
-
+//Pay credits
 const payCredit= async (req,res)=>{
   const {OrderNumber,payedAmount}=req.body
   console.log("🚀 ==> file: GeneralSale.js:77 ==> payCredit ==> OrderNumber,payedAmount:", OrderNumber,payedAmount);

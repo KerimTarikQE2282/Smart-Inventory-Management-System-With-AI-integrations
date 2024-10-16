@@ -6,7 +6,7 @@ const warehouse = require('../../models/Store/warehouse');
 const itemModel = require('../../models/Store/item');
 
 
-
+//Add New Item To wareHouse
 const add_New_Item_To_wareHouse = async (req,res) => {
    const item_set=req.body;
    console.log("🚀 ==> file: WareHouseAdjustments.js:13 ==> constadd_New_Item_To_wareHouse= ==> item_set:", item_set);
@@ -89,7 +89,7 @@ const add_New_Item_To_wareHouse = async (req,res) => {
 }
 
 
-
+//transfer item From one warehouse to the other
 const Adjust_wareHouse_Item=async (req,res)=>{
 
   const {item,From_warehouse,To_WareHouse,Carton_number,from_Carton_Number,to_Carton_Number}=req.body;

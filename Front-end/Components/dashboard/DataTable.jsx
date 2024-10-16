@@ -51,7 +51,15 @@ export default function DataTable({ name, columns = [''], resourceTitle }) {
   }
 
   if (isLoading) {
-    return <Loader />;
+    return (
+    <div className="relative h-[50vh] flex items-start justify-center ">
+    <div className='mt-[20vw]'>
+        <Loader /> 
+    </div>
+</div>
+      
+    )
+  
   } else {
     return (
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
