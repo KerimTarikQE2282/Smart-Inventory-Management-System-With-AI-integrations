@@ -2,7 +2,6 @@ const StatusCodes=require('http-status-codes')
 const { BadRequestError } = require('../../errors')
 const ContainedItemsModel=require('../../models/Store/WareHouseItem');
 const { findByIdAndUpdate } = require('../../models/Store/AddStockAdjustemnt');
-const WareHouseItem = require('../../models/Store/WareHouseItem');
 const warehouse = require('../../models/Store/warehouse');
 const itemModel = require('../../models/Store/item');
 const Store = require('../../models/Store/Shop');

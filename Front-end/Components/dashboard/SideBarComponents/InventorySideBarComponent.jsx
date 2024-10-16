@@ -12,12 +12,12 @@ function InventorySideBarComponent() {
     const inventoryLinks=[
       {
         name:"All",
-        link:"/storing",
+        link:"/what wjksanjkasnjkdnasjknxdjkas/",
         icon:<Wallpaper className='w-4 h-4'/>
       },
       {
         name:"Items",
-        link:"/storing/items/",
+        link:"/storing/items",
         icon:<Box className='w-4 h-4'/>
       },
       {
