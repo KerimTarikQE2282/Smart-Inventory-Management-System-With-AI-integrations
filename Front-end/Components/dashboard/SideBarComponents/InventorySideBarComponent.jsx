@@ -6,7 +6,7 @@ import {
     CollapsibleContent,
     CollapsibleTrigger,
   } from "@/Components/ui/collapsible"
-function InventorySideBarComponent() {
+function InventorySideBarComponent(props) {
     const [inventoryOpen,setInventoryopen]=React.useState(false)
     
     const inventoryLinks=[
@@ -59,10 +59,10 @@ function InventorySideBarComponent() {
     ]
     const InventoryList=inventoryLinks.map((link)=>{
         return(
-            <Link href={link.link} key={link.name} className='flex items-center justify-between hover:bg-slate-900 transition-all duration-500 ease-in-out pl-8 pr-2 py-2.5 ml-5 rounded-lg text-sm ' > 
-              
+            <Link href={link.link} key={link.name} className='flex items-center  hover:bg-slate-900 transition-all duration-500 ease-in-out pl-8 pr-2 py-2.5 ml-5 rounded-lg text-sm ' > 
+               {link.icon}
               <span>{link.name}</span>
-              {link.icon}
+             
               
               </Link>
         );
@@ -73,7 +73,7 @@ function InventorySideBarComponent() {
   return (
    <div>
       <Collapsible >
-      <CollapsibleTrigger  className='flex items-center space-x-2 p-2' onClick={changeChevron} >
+      <CollapsibleTrigger  className={props.location=="storing"?'flex items-center space-x-2 p-2 bg-blue-500 rounded-md':'flex items-center space-x-2 p-2 '} onClick={changeChevron} >
         <BaggageClaim className='w-4 h-4'/>
         
         <span> Inventory</span>
@@ -82,7 +82,7 @@ function InventorySideBarComponent() {
         <CollapsibleContent >
         
         
-        {InventoryList}
+        <div style={{ position: "relative", left: "1vw" }}> {InventoryList}</div>
         {/* <Link>Item Groups</Link>
          <Link>Inventory Adjustments</Link> */}
        </CollapsibleContent>

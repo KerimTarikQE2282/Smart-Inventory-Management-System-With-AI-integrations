@@ -13,7 +13,7 @@ function Inventory() {
       icon: <FileStack strokeWidth=".5px" className='w-36 h-36'  />,
       phrase: "get a glimpse view of all the users data  .",
       Buttontext: "View All user",
-      link: "/",
+      link: "/usermanagement",
       linkTitle: 'View All Saved Purchase orders',  // Adjusted to match the title
       enabled: true
   },

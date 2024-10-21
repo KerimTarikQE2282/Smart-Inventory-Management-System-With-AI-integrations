@@ -1,6 +1,8 @@
 const StatusCodes=require('http-status-codes')
 const Item=require('../../models/Store/item')
 const { BadRequestError } = require('../../errors/')
+const InventoryAdjustments=require('../../models/Store/WareHouseItem')  
+const warehouse = require('../../models/Store/warehouse')
 
 
 //TODO  dont forget to specify created by after specifyint 
@@ -80,8 +82,43 @@ const searchItem = async (req, res) => {
 };
 
 
+const getAllContainedWareHouseItems = async (req, res) => {
+ 
+  const ItemId = req.params.itemId;
+
+  var itemPlacements={}
+
+  const ItemsInWareHouse=await InventoryAdjustments.find({item:ItemId})
+  console.log("🚀 ==> file: items.js:92 ==> getAllContainedWareHouseItems ==> ItemsInWareHouse:", ItemsInWareHouse);
 
 
 
-  module.exports = { addItem,getAllItems,getItemsByID,updateItems,removeItems,searchItem};
+
+  for(var i=0;i<ItemsInWareHouse.length;i++){
+    const myWareHouse=await warehouse.findOne({_id:ItemsInWareHouse[i].itemWentTo[ItemsInWareHouse[i].itemWentTo.length-1]})
+    console.log("🚀 ==> file: items.js:100 ==> getAllContainedWareHouseItems ==> myWareHouse:", myWareHouse.WareHouseName);
+    if(itemPlacements[myWareHouse.WareHouseName]==null){
+      const myWareHouse=await warehouse.findOne({_id:ItemsInWareHouse[i].itemWentTo[ItemsInWareHouse[i].itemWentTo.length-1]})
+      console.log("🚀 ==> file: items.js:100 ==> getAllContainedWareHouseItems ==> myWareHouse:", myWareHouse.WareHouseName);
+
+      itemPlacements[myWareHouse.WareHouseName]=1
+    }
+    else{
+      const myWareHouse=await warehouse.findOne({_id:ItemsInWareHouse[i].itemWentTo[ItemsInWareHouse[i].itemWentTo.length-1]})
+      console.log("🚀 ==> file: items.js:100 ==> getAllContainedWareHouseItems ==> myWareHouse:", myWareHouse.WareHouseName);
+      itemPlacements[myWareHouse.WareHouseName]++
+      
+    }
+  }
+ 
+
+
+
+  res.status(StatusCodes.OK).json(itemPlacements);
+
+};
+
+
+
+  module.exports = { addItem,getAllItems,getItemsByID,updateItems,removeItems,searchItem,getAllContainedWareHouseItems};
   

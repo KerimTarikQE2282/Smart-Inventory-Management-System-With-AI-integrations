@@ -4,7 +4,7 @@ import React from 'react'
 function Search_bar() {
   return (
     <div>
-      <form className='hidden lg:block'>
+      <form className=' lg:block ml-5'>
       <label htmlFor="simple-search" className="sr-only">Search</label>
 <div className="relative lg:w-[12vw] w-[26vw] hover:w-[15vw] focus:w-[15vw] transition-all duration-1000 ease-in-out ">
         <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">

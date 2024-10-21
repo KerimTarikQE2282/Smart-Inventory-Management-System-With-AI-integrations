@@ -6,7 +6,7 @@ import {
     CollapsibleContent,
     CollapsibleTrigger,
   } from "@/Components/ui/collapsible"
-function SalesSideBarComponent() {
+function SalesSideBarComponent(props) {
     const [inventoryOpen,setInventoryopen]=React.useState(false)
 
     const inventoryLinks=[
@@ -29,10 +29,10 @@ function SalesSideBarComponent() {
     ]
     const InventoryList=inventoryLinks.map((link)=>{
         return(
-            <Link href={link.link} key={link.name} className='flex items-center justify-between hover:bg-slate-900 transition-all duration-500 ease-in-out pl-8 pr-2 py-2.5 ml-5 rounded-lg text-sm ' > 
-              
+            <Link href={link.link} key={link.name} className='flex  hover:bg-slate-900 transition-all duration-500 ease-in-out pl-8 pr-2 py-2.5 ml-5 rounded-lg text-sm ' > 
+              {link.icon}
               <span>{link.name}</span>
-               {link.icon}
+               
               
               </Link>
         );
@@ -40,7 +40,7 @@ function SalesSideBarComponent() {
   return (
     <div>
       <Collapsible>
-      <CollapsibleTrigger  className='flex items-center space-x-2 p-2 ' onClick={()=>setInventoryopen(!inventoryOpen)}>
+      <CollapsibleTrigger  className={props.location=="recieving" ? 'flex items-center space-x-2 p-2 bg-blue-500 rounded-md':'flex items-center space-x-2 p-2 '} onClick={()=>setInventoryopen(!inventoryOpen)}>
         <ShoppingCart className='w-4 h-4'/>
         
         <span> Purchase</span>
@@ -48,8 +48,9 @@ function SalesSideBarComponent() {
          </CollapsibleTrigger>
         <CollapsibleContent >
         
-        
-        {InventoryList}
+        <div style={{ position: "relative", left: "1.5vw" }}> {InventoryList}</div>
+
+       
         {/* <Link>Item Groups</Link>
          <Link>Inventory Adjustments</Link> */}
        </CollapsibleContent>
