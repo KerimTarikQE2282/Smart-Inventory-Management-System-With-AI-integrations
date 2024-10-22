@@ -17,7 +17,7 @@ import { usePathname } from 'next/navigation'
 function Sidebar() {
   const pathname=usePathname();
   const location=pathname.split("/")[1];
-
+  const User =  JSON?.parse(global?.window?.localStorage.getItem('INVENTORY_USER') || '{}');
 
   
 
@@ -47,32 +47,30 @@ function Sidebar() {
        <span> Home</span> 
        </Link>
        
-      <InventorySideBarComponent location={location}/>
+   { (User.role=="admin"||User.role=="warehouse_personnel") &&  <InventorySideBarComponent location={location}/>}
       
        
         
 
 
 {/*                            */}
-       <SalesSideBarComponent location={location}/>
-       
+{ (User.role=="admin" || User.role=="sales_personnel") &&       <SalesSideBarComponent location={location}/> }       
     
-      <PurchaseSideBarComponent location={location}/>
-      <UserManagement location={location}/>
+{User.role=="admin"  &&  <UserManagement location={location}/>}
 
        <Link href={"#"} className='flex items-center space-x-2 p-2'>
-        <BrainCircuit className='w-4 h-4'/>
-       <span> AI</span> 
+{User.role=="admin"  &&      <>  <BrainCircuit className='w-4 h-4'/>  <span> AI</span> </>
+}      
        </Link>
 
        <Link href={"#"} className='flex items-center space-x-2 p-2'>
-        <BarChart4 className='w-4 h-4'/>
-       <span> Reports</span> 
+{ User.role=="admin"  &&      <> <BarChart4 className='w-4 h-4'/><span> Reports</span> </> 
+}       
        </Link>
 
        <Link href={"#"} className='flex items-center space-x-2 p-2'>
-        <FolderClosed className='w-4 h-4'/>
-       <span> Documents</span> 
+{ User.role=="admin"  &&      <> <FolderClosed className='w-4 h-4'/>  <span> Documents</span> </> 
+}      
        </Link>
 
        </nav>

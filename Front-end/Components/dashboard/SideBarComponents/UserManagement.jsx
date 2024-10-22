@@ -17,7 +17,7 @@ function SalesSideBarComponent(props) {
       },
       {
         name:"Add User",
-        link:"/usermanagement/adduser",
+        link:"/usermanagement/User/new",
         icon:<Plus className='w-4 h-4'/>
       },
    

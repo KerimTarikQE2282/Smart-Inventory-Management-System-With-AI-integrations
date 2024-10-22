@@ -10,8 +10,7 @@ import {  useRouter } from 'next/navigation'
 function header({user}) {
   const router=useRouter()
   const [displayLogout,setDisplayLogout]=React.useState(false)
-  const User = {} || JSON?.parse(global?.window?.localStorage.getItem('INVENTORY_USER') || '{}');
-  console.log("🚀 ==> file: Header.jsx:13 ==> header ==> User:", User);
+  const User =  JSON?.parse(global?.window?.localStorage.getItem('INVENTORY_USER') || '{}');
 
   const handleLogout=()=>{
     Swal.fire({
@@ -70,12 +69,16 @@ function header({user}) {
       
  
      <div className="flex items-center gap-2 ml-2">
-       <button className="flex items-center">
-         {User?.username}
-        
-       </button>
-       <Image src={image || User?.profilePicture} alt="" className="rounded-full w-10 h-10 ml-5  " />
        
+       {User?.profilePicture && (
+  <Image 
+    src={User.profilePicture} 
+    alt="User Profile Picture" 
+    width={40} 
+    height={40} 
+    className="rounded-full ml-5" 
+  />
+)}       
      </div>
    </div>
  </div>
