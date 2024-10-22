@@ -23,7 +23,7 @@ export default function DeleteBtn(props) {
         confirmButtonText: "Yes, delete it!"
       }).then(async (result) => {
         if (result.isConfirmed) {
-             await axios.delete(` http://localhost:3002/api/v1/${resourceTitle}/${id}`);
+             await axios.delete(` https://seniorproject-inventory-managemnet.onrender.com//api/v1/${resourceTitle}/${id}`);
           //  router.refresh();
           await Swal.fire({
             title: "Deleted!",
