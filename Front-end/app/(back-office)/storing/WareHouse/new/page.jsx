@@ -11,8 +11,8 @@ import {makePUTApiRequest} from "../../../../../actions/StoreGeneralCrudRequests
 
 import { connect } from "react-redux";
 
- function NewWareHouse({initialData,isupdate,makePOSTApiRequest,makePUTApiRequest}) {
-
+ function NewWareHouse(props) {
+const {initialData,isupdate,makePOSTApiRequest,makePUTApiRequest}=props
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const [loading,setLoading]=React.useState(false)

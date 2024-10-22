@@ -12,7 +12,8 @@ import { makePUTApiRequest, makePOSTApiRequest } from '@/actions/StoreGeneralCru
 import { useGetDataById } from "@/hooks/useGetDataById";
 import ImageInput from "@/Components/FormInputs/ImageInput";
 
-function NewUser({ initialData, isupdate = false, makePOSTApiRequest, makePUTApiRequest }) {
+function NewUser(props) {
+  const { initialData, isupdate = false, makePOSTApiRequest, makePUTApiRequest }=props
   const [imageUrl, setImageUrl] = React.useState(isupdate ? initialData?.imageUrl : '');
 
   const router = useRouter();

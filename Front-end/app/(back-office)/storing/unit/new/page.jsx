@@ -9,8 +9,8 @@ import  {makePUTApiRequest} from "@/actions/StoreGeneralCrudRequests";
 import { useGetDataById } from "@/hooks/useGetDataById";
 import { connect } from "react-redux";
 
-function NewUnit({initialData,isupdate,makePOSTApiRequest,makePUTApiRequest}) {
-  
+function NewUnit(props) {
+  const {initialData,isupdate,makePOSTApiRequest,makePUTApiRequest}=props
    // Fetch data by ID
 
 

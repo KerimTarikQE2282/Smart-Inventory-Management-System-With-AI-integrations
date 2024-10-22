@@ -11,7 +11,8 @@ import {makePOSTApiRequest,makePUTApiRequest} from '@/actions/StoreGeneralCrudRe
 import { useRouter } from "next/navigation";
 import { connect } from "react-redux";
 
-function NewCategory({initialData='',isupdate=false, makePOSTApiRequest, makePUTApiRequest}) {
+function NewCategory(props) {
+  const {initialData='',isupdate=false, makePOSTApiRequest, makePUTApiRequest}=props
   // console.log("🚀 ==> file: page.jsx:15 ==> NewCategory ==> initialData:", initialData);
 
   const router=useRouter()
