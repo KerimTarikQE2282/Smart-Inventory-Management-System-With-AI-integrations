@@ -7,7 +7,8 @@ import { MinusCircle, PlusCircle, Truck } from "lucide-react";
 
 
 
-export default  function NewAdjustments({items,WareHouses}) {
+export default  function NewAdjustments(props) {
+  const {items,WareHouses}=props
   const [displayedForm,setDisplayedForm]=React.useState("add")
   const tabs=[
     {

@@ -2,6 +2,8 @@
 import React from 'react';
 import { getData } from "@/actions/storeActions/StoreGeneralCrudRequests/getData";
 import NewAdjustments from '@/Components/dashboard/Forms/AdjustmentForm';
+
+
 export default  function Adjustments() {
 
   const [item, setItem] = React.useState([]);

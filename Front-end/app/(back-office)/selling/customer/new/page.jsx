@@ -10,18 +10,14 @@ import SubumitButton from "@/Components/FormInputs/SubumitButton";
 import { makePUTApiRequest, makePOSTApiRequest } from '../../../../../actions/StoreGeneralCrudRequests';
 import { useGetDataById } from "@/hooks/useGetDataById";
 
-
-function NewCustomer({ initialData, isupdate = false, makePOSTApiRequest, makePUTApiRequest }) {
-  console.log("🚀 ==> file: page.jsx:14 ==> NewBrand ==> initialData:", initialData);
-
+function NewCustomer(props) {
+  const { initialData, isupdate = false, makePOSTApiRequest, makePUTApiRequest }=props
   const router = useRouter();
   const [loading, setLoading] = React.useState(false);
 
   const { register, handleSubmit, formState: { errors } } = useForm({
     defaultValues: initialData, // Set initial data as default values
   });
-
-
 
   // Handle form submission
   async function onSubmit(formData) {
@@ -45,11 +41,9 @@ function NewCustomer({ initialData, isupdate = false, makePOSTApiRequest, makePU
     }
   }
 
-
-
   return (
     <div>
-       <FormHeader title={`${isupdate ? 'Update Customer' : 'New Customer'}`} link={'/dashboard/customers'} />
+      <FormHeader title={`${isupdate ? 'Update Customer' : 'New Customer'}`} link={'/dashboard/customers'} />
       <form onSubmit={handleSubmit(onSubmit)} className='w-full max-w-4xl p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700 mx-auto my-3'>
         <div className='grid gap-4 sm:grid-cols-2 sm:gap-6'>
           <TextInput
@@ -116,6 +110,8 @@ function NewCustomer({ initialData, isupdate = false, makePOSTApiRequest, makePU
   );
 }
 
+// Define mapStateToProps if needed, otherwise leave it empty
 const mapStateToProps = (state) => ({});
 
+// Properly connect your component with Redux
 export default connect(mapStateToProps, { makePOSTApiRequest, makePUTApiRequest })(NewCustomer);
