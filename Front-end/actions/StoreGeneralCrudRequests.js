@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 
-const baseUrl = 'https://seniorproject-inventory-managemnet.onrender.com//api/v1/';
+const baseUrl = 'https://seniorproject-inventory-managemnet.onrender.com/api/v1/';
 
 
 

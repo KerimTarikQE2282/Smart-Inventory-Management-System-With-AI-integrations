@@ -63,7 +63,7 @@ import {
                 'Content-Type': 'application/json'
             }
         };
-     const url='https://seniorproject-inventory-managemnet.onrender.com//api/v1/?email='+ data.Email +'&password='+data.Password+''
+     const url='https://seniorproject-inventory-managemnet.onrender.com/api/v1/?email='+ data.Email +'&password='+data.Password+''
         
     
        try {

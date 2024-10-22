@@ -1,5 +1,5 @@
 export async function getData(url) {
-    const baseUrl = 'https://seniorproject-inventory-managemnet.onrender.com//api/v1';
+    const baseUrl = 'https://seniorproject-inventory-managemnet.onrender.com/api/v1';
     try {
         const response = await fetch(`${baseUrl}/${url}`,{
             cache:'no-store'
