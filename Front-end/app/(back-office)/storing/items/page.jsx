@@ -1,4 +1,4 @@
-import DataTable from '@/Components/dashboard/DataTable'
+import Table from './Components/Table' 
 import TabelNavBar from '@/Components/TabelNavBar'
 import React from 'react'
 
@@ -12,7 +12,7 @@ export default async function Items() {
     <div>
        <TabelNavBar link='/storing/items/new' title='Items'/>
        <div className='my-4 p-8'>
-    <DataTable name='items' resourceTitle={'items'} columns={columns}/>
+    <Table name='items' resourceTitle={'items'} columns={columns}/>
 
     </div>
     </div>

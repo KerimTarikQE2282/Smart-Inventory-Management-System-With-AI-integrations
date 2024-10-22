@@ -115,8 +115,8 @@ const getAllContainedWareHouseItems = async (req, res) => {
     });
     const newMatchingItems = await Promise.all(
       matchingItems.map(async (item) => {
-        const itemName = await ItemModel.findById(item.item);
-        return { ...item, itemName: itemName.title }; // Add the title from itemName
+        const itemName = await ItemModel.findById(item?.item);
+        return { ...item, itemName: itemName?.title }; // Add the title from itemName
       })
     );
     

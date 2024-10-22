@@ -6,7 +6,9 @@ import { usePathname } from 'next/navigation'
 
 function HomeNav() {
 
-    const User = {} || JSON?.parse(global?.window?.localStorage.getItem('INVENTORY_USER') || '{}');
+    const User =  JSON?.parse(global?.window?.localStorage.getItem('INVENTORY_USER') || '{}');
+    console.log("🚀 ==> file: HomeNav.jsx:10 ==> HomeNav ==> User:", User);
+
     const pathname = usePathname()
 console.log(pathname)
     const navLinks=[
@@ -40,7 +42,7 @@ const DisplayNavLinks=navLinks.map((link)=>{
         <Home/>
         </div>
         <div className='flex-col'>
-            <p className='font-semibold text-slate-900 '>Hello,{User?.username}</p>
+            <p className='font-semibold text-slate-900 '>Welcome, {User?.username}</p>
             <span className='text-sm'>{User.fullName}</span>
        
         </div>

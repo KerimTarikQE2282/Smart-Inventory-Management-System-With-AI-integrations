@@ -2,8 +2,8 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useMutation, useQuery } from 'react-query'
-import TextInput from '@/Components/FormInputs/TextInput';
-import SubumitButton from '@/Components/FormInputs/SubumitButton';
+import TextInput from '../../Components/FormInputs/TextInput';
+import SubumitButton from '../../Components/FormInputs/SubumitButton';
 import LoginButton from './LoginButton';
 import axios from 'axios';
 import toast from 'react-hot-toast';
