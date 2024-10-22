@@ -11,8 +11,8 @@ import { connect } from "react-redux";
 import TextAreaInputs from "@/Components/FormInputs/TextAreaInputs";
 import { useRouter } from "next/navigation";
 
-function NewStore({initialData,isupdate,makePOSTApiRequest,makePUTApiRequest}) {
-  
+function NewStore(props) {
+  const {initialData,isupdate,makePOSTApiRequest,makePUTApiRequest}=props
    // Fetch data by ID
 
 

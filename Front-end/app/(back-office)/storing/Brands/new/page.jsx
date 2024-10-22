@@ -10,7 +10,8 @@ import SubumitButton from "@/Components/FormInputs/SubumitButton";
 import { makePUTApiRequest, makePOSTApiRequest } from '../../../../../actions/StoreGeneralCrudRequests';
 import { useGetDataById } from "@/hooks/useGetDataById";
 
-function NewBrand({ initialData, isupdate = false, makePOSTApiRequest, makePUTApiRequest }) {
+function NewBrand(props) {
+  const { initialData, isupdate = false, makePOSTApiRequest, makePUTApiRequest }=props
   console.log("🚀 ==> file: page.jsx:14 ==> NewBrand ==> initialData:", initialData);
 
   const router = useRouter();

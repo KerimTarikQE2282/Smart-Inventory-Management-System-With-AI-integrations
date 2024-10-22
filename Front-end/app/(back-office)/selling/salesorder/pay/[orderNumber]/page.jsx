@@ -11,8 +11,8 @@ import { makePUTApiRequest, makePOSTApiRequest } from '@/actions/StoreGeneralCru
 import { useGetDataById } from "@/hooks/useGetDataById";
 import { getData } from "@/actions/storeActions/StoreGeneralCrudRequests/getData";
 import PaymentModal from '../../Components/PaymentModal';
-function NewBrand({ initialData, isupdate = false, makePOSTApiRequest, makePUTApiRequest,params:orderNumber }) {
-
+function NewBrand() {
+  const { initialData, isupdate = false, makePOSTApiRequest, makePUTApiRequest,params:orderNumber }=props
   const [showModal,setShowModal]=React.useState(false) 
   const [product,setProduct]=React.useState([])
 

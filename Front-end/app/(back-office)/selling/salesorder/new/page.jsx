@@ -16,7 +16,8 @@ import NonIdSelectComponent from '@/Components/FormInputs/NonIdSelectComponent';
 import SalesModal from '../Components/SalesModal';
 
 
-function NewCustomer({ initialData, isupdate = false, makePOSTApiRequest, makePUTApiRequest }) {
+function NewCustomer(props) {
+  const { initialData, isupdate = false, makePOSTApiRequest, makePUTApiRequest }=props
   console.log("🚀 ==> file: page.jsx:14 ==> NewBrand ==> initialData:", initialData);
   const { register, handleSubmit, formState: { errors } } = useForm({
     defaultValues: initialData, // Set initial data as default values

@@ -25,18 +25,18 @@ function Sidebar() {
 
   return (
  
-       <div className='  flex-col w-60 min-h-screen bg-slate-900  text-white justify-between fixed  sm:flex mr-0' > 
+       <div className='  flex-col w-60 min-h-screen bg-slate-900  text-white justify-between fixed  sm:flex mr-0 overflow-y-auto' > 
        {
         /*top part*/
        }
        
-       <div className='flex-col '>
+       <div className='flex-col overflow-y-auto max-h-screen scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-slate-800 '>
        {
         /*Logo*/
        }
        <Link href={"#"} className='flex space-x-2 bg-slate-950 items-center py-3 px-2'>
         <ShoppingCart/>
-        <span className='font-semibold text-l '>Inventory</span>
+        <span className='font-semibold text-l '>OAG Inventory management system  </span>
        </Link>
        {
         /*Links*/
