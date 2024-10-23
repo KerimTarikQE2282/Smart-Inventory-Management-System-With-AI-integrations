@@ -198,7 +198,7 @@ var totalSalesPrice=0;
      </div>
   </div>
 
-  <SubumitButton title={`${isupdate ? 'Update Credit' : 'New Credit'}`} isLoading={loading} />
+  <SubumitButton title={`${isupdate ? 'Update sales' : 'New sales'}`} isLoading={loading} />
 </form>
 {showModal && <SalesModal data={FinalVersionFromData} item={product} removeModal={setShowModal} request={makePOSTApiRequest} setLoading={setLoading}/>}
     </div>

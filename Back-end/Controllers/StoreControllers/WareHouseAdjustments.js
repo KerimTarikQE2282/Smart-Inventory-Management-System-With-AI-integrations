@@ -201,7 +201,3 @@ res.status(StatusCodes.OK).json({msg:"Single Item Adjustment Succesfull"})
 }
 
 module.exports={add_New_Item_To_wareHouse,Adjust_wareHouse_Item};
-
-//TODO test out full warehouse
-//TODO test out full warehouse
-//TODO test out full warehouse

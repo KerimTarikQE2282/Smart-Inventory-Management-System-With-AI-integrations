@@ -15,6 +15,8 @@ export default function DataTable({ name, columns = [''], resourceTitle }) {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
   const { isLoading, data, isError, error, isFetching } = useGetData(name);
+  console.log("🚀 ==> file: DataTable.jsx:18 ==> DataTable  newest ==> data:", data);
+
 
 
 
@@ -27,22 +29,22 @@ export default function DataTable({ name, columns = [''], resourceTitle }) {
       setData(data?.data?.[name]);
     }
   }, [data, name]);
-  console.log("🚀 ==> file: DataTable.jsx:23 ==> DataTable ==> Data:", Data);
+  console.log("🚀 ==> file: DataTable.jsx:23 ==> DataTable ==> Data fro Table:", Data);
 
   const onSubmit = async (formData) => {
     console.log("🚀 ==> onSubmit ==> data:", formData);
-    const baseUrl = `https://seniorproject-inventory-managemnet.onrender.com/api/v1/${name}`;
+    const baseUrl = `http://localhost:3002/api/v1/${name}`;
     const url = `${baseUrl}/search`;
     try {
       const res = await axios.post(url, formData);
       setData(res.data); // Update the state with new data
-      console.log("🚀 ==> Data:", res.data);
+      console.log("🚀 ==> Response Data:", res.data);
     } catch (error) {
       console.log("🚀 ==> error:", error);
       toast.error(error.response?.data?.message || "Something went wrong");
     }
   }
-  console.log("🚀 ==> file: DataTable.jsx:22 ==> DataTable ==> Data:", Data);
+  console.log("🚀 ==> file: DataTable.jsx:22 ==> DataTable ==> Data:", Data?.data);
 
   const exportJson = () => {
     const fileName = 'name_data';

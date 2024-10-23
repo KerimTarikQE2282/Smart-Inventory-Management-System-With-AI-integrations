@@ -1,4 +1,4 @@
-import DataTable from '@/Components/dashboard/DataTable'
+import DataTable from './Components/Table'
 import TabelNavBar from '@/Components/TabelNavBar'
 import React from 'react'
 

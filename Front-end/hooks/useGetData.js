@@ -2,7 +2,7 @@ import axios from "axios";
 import {useQuery} from "react-query";
 
 const fetchData=(url)=>{
-  const myurl=`https://seniorproject-inventory-managemnet.onrender.com/api/v1/${url}/`
+  const myurl=`http://localhost:3002/api/v1/${url}/`
   
     console.log("🚀 ==> file: useGetData.js:7 ==> fetchData ==> url:", myurl);
 

@@ -137,5 +137,41 @@ const getAllContainedWareHouseItems = async (req, res) => {
 
 };
 
+const getAllContainedWareHouseItemsDetailed = async (req, res) => {
+  try {
+    const wareHouseId = req.params.wareHouseId;
 
-module.exports = { getAllWarehouses, createWarehouse, updateWarehouse, deleteWarehouse, getWarehouseById, searchWareHouse ,getAllContainedWareHouseItems};
+    // Fetch items that belong to the specific warehouse
+    const wareHouseItems = await InventoryAdjustments.find({});
+    
+    // Filter items based on the warehouse they were last sent to
+    const matchingItems = wareHouseItems.filter(item => {
+      const itemWentTo = item.itemWentTo;
+      return itemWentTo[itemWentTo.length - 1].equals(wareHouseId);
+    });
+
+    // Retrieve item names and map the results to include only Carton_Number and itemName
+    const newMatchingItems = await Promise.all(
+      matchingItems.map(async (item) => {
+        const itemName = await ItemModel.findById(item?.item);
+        return {
+          Carton_Number: item?.Carton_Number,
+          itemName: itemName?.title || 'Unknown Item'  // Default to 'Unknown Item' if title is not found
+        };
+      })
+    );
+
+    // Send the filtered data with only Carton_Number and itemName
+    res.status(StatusCodes.OK).json({details:newMatchingItems});
+  } catch (error) {
+    // Handle any errors that occur
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: 'Error fetching warehouse items' });
+  }
+};
+
+
+
+
+
+
+module.exports = { getAllWarehouses, createWarehouse, updateWarehouse, deleteWarehouse, getWarehouseById, searchWareHouse ,getAllContainedWareHouseItems,getAllContainedWareHouseItemsDetailed};

@@ -1,4 +1,7 @@
 const Store = require('../../models/Store/Shop');
+const { StatusCodes } = require('http-status-codes');
+const InventoryAdjustments=require('../../models/Store/WareHouseItem')  
+const ItemModel=require('../../models/Store/item')
 
 const getAllStores = async (req, res) => {
   try {
@@ -96,4 +99,53 @@ const searchStore = async (req, res) => {
 
 };
 
-module.exports = { getAllStores, createStore, updateStore, deleteStore, getStoreById,searchStore  };
+const getAllContainedShopItems = async (req, res) => {
+   try {
+    const wareHouseId = req.params.wareHouseId;
+
+
+    // Fetch items that belong to the specific warehouse from InventoryAdjustments
+    const wareHouseItems = await InventoryAdjustments.find({});
+
+
+    
+    // Filter items based on the warehouse they were last sent to
+    const matchingItems = wareHouseItems.filter(item => {
+
+      const itemWentTo = item.itemWentTo;
+      return itemWentTo[itemWentTo.length - 1].equals(wareHouseId);
+    });
+
+    // Retrieve item names and map the results
+    const newMatchingItems = await Promise.all(
+      matchingItems.map(async (item) => {
+        const itemName = await ItemModel.findById(item?.item);
+        return { ...item._doc, itemName: itemName?.title }; // Add title from itemName
+      })
+    );
+    console.log("🚀 ==> file: Shop.js:126 ==> getAllContainedShopItems ==> newMatchingItems:", newMatchingItems);
+
+
+    // Create an object to store item displacement count
+    let myItemDisplacement = {};
+
+    // Count occurrences of each item by name
+    newMatchingItems.forEach(item => {
+      if (!myItemDisplacement[item.itemName]) {
+        myItemDisplacement[item.itemName] = 1;
+      } else {
+        myItemDisplacement[item.itemName]++;
+      }
+    });
+
+    // Send a successful response with the item displacement counts
+    res.status(StatusCodes.OK).json(myItemDisplacement);
+  } catch (error) {
+    // Handle any errors that occur
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: 'Error fetching warehouse items' });
+  }
+};
+
+
+
+module.exports = { getAllStores, createStore, updateStore, deleteStore, getStoreById,searchStore,getAllContainedShopItems  };

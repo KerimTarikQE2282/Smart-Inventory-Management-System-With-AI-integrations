@@ -70,7 +70,7 @@ function NewStore({initialData,isupdate,makePOSTApiRequest,makePUTApiRequest}) {
 
 
         </div>
-       <SubumitButton  title={`${isupdate?'Updated Unit':'New Unit'}`}   isLoading={loading}/>
+       <SubumitButton  title={`${isupdate?'Updated Store':'New Store'}`}   isLoading={loading}/>
 
       </form>
     </div>

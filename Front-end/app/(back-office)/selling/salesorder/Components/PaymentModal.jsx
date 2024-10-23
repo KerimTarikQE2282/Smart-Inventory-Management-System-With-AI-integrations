@@ -28,7 +28,7 @@ export default function SalesModal(props) {
     });
     return product?.title;
   }
-  const backendSendingData={OrderNumber:props.data.orderNumber,payedAmount:props.data.payment[(propsbacl.data.payment).length-1].payedAmount}
+  const backendSendingData={OrderNumber:props.data.orderNumber,payedAmount:props.data.payment[(props.data.payment).length-1].payedAmount}
   async function handleRequest() {
     console.log('Request Sent');
     try {
