@@ -9,11 +9,11 @@ import TextInput from "@/Components/FormInputs/TextInput";
 import SubumitButton from "@/Components/FormInputs/SubumitButton";
 import { makePUTApiRequest, makePOSTApiRequest } from '../../../../../actions/StoreGeneralCrudRequests';
 import { useGetDataById } from "@/hooks/useGetDataById";
-
 function NewBrand({ initialData, isupdate = false, makePOSTApiRequest, makePUTApiRequest }) {
-  console.log("🚀 ==> file: page.jsx:14 ==> NewBrand ==> initialData:", initialData);
+
 
   const router = useRouter();
+
   const [loading, setLoading] = React.useState(false);
 
   const { register, handleSubmit, formState: { errors } } = useForm({

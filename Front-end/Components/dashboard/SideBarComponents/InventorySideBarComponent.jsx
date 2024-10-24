@@ -22,7 +22,7 @@ function InventorySideBarComponent(props) {
       },
       {
         name:"Categories",
-        link:"/storing/Categories/",
+        link:"/storing/category/",
         icon:<Boxes className='w-4 h-4'/>
       },
       {

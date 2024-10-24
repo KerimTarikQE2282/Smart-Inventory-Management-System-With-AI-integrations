@@ -15,18 +15,7 @@ console.log(pathname)
         {
             title:"DashBoard",
             href:'/dashboard/home/overview',
-    },
-    {
-        title:"Getting Started",
-        href:'/dashboard/home/getting-started',
-},{
-    title:"Recent Updates",
-    href:'/dashboard/home/updates',
-},
-{
-    title:"Announcements",
-    href:'/dashboard/home/announcements',
-}
+    }
 ]
 const DisplayNavLinks=navLinks.map((link)=>{
     return(

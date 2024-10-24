@@ -23,6 +23,8 @@ function header({user}) {
     }).then(async (result) => {
       if (result.isConfirmed) {
           global.window.localStorage.removeItem('INVENTORY_USER');
+          global.window.localStorage.removeItem('INVENTORY_USER_TOKEN');
+
           router.replace('/');
 
         //  router.refresh();

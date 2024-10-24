@@ -11,11 +11,13 @@ const auth = async (req, res, next) => {
   if (!authHeader || !authHeader.startsWith('Bearer')) {
     throw new UnauthenticatedError('Authentication invalid');
   }
-  const token = authHeader.split('_')[1];
+  const token = authHeader.split(' ')[1];
   console.log("🚀 ==> file: authentication.js:14 ==> auth ==> token:", token);
   try {
     const payload = jwt.verify(token, process.env.JWT_SECRET_KEY);
     req.user = { userId: payload.user.userId,role:payload.user.role };  
+    console.log("🚀 ==> file: authentication.js:19 ==> auth ==> payload:", payload);
+
     next();
   } catch (error) {
     console.log("🚀 ==> file: authentication.js:31 ==> auth ==> error:", error);

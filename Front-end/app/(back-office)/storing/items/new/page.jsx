@@ -5,6 +5,7 @@ import CreateItemFrom from '@/Components/dashboard/Forms/CreateItemFrom';
 import { getData } from "@/actions/storeActions/StoreGeneralCrudRequests/getData";
 
 export default function NewItem(props) {
+  
   const { initialData, isupdate } = props;
 
   const [categories, setCategories] = useState([]);

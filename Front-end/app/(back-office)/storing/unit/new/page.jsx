@@ -26,7 +26,8 @@ function NewUnit({initialData,isupdate,makePOSTApiRequest,makePUTApiRequest}) {
        try {
          
         const done=await makePUTApiRequest(`unit/${initialData._id}`,setLoading,data,'unit')
-          
+        router.replace('/storing/Brands');
+
           console.log("🚀 ==> file: page.jsx:28 ==> onSubmit ==> done:", done);
  
           if(done==true){
@@ -41,6 +42,8 @@ function NewUnit({initialData,isupdate,makePOSTApiRequest,makePUTApiRequest}) {
        setLoading(true)
  
        await makePOSTApiRequest('unit',setLoading,data,'WareHouse')
+       router.replace('/storing/Brands');
+
      }
  
    }

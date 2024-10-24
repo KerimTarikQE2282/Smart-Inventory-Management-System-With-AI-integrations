@@ -12,11 +12,12 @@ export const makePOSTApiRequest = (endpoint,setLoading,data,name) => async dispa
   console.log('item addddd 222222')
   const url=`${baseUrl}${endpoint}`
 
-  console.log("🚀 ==> file: StoreGeneralCrudRequests.js:13 ==> makePOSTApiRequest ==> url:", url);
-
-  const config = {
+  const User_role =  JSON?.parse(global?.window?.localStorage.getItem('INVENTORY_USER_TOKEN') || '{}');
+  const authentication_token=`Bearer ${User_role}`
+  var config = {
   headers: {
     'Content-Type': 'application/json',
+    'authorization': authentication_token
   },
 };
 
@@ -60,13 +61,16 @@ dispatch({
 
 
 export const makePUTApiRequest = (endpoint,setLoading,data,name) => async dispatch => {
-  console.log(` frommmmmmmmmmmmmmmmmmmmmmmmmmmmmmm update api endpoint ${endpoint}${baseUrl}${endpoint}`)
+  const User_role =  JSON?.parse(global?.window?.localStorage.getItem('INVENTORY_USER_TOKEN') || '{}');
+  const authentication_token=`Bearer ${User_role}`
+  var config = {
+  headers: {
+    'Content-Type': 'application/json',
+    'authorization': authentication_token
+  },
+};
 setLoading(true)
-     const config = {
-        headers: {
-          'Content-Type':  'application/json',
-        }
-      }
+    
       try {
         
         const response=await axios.patch(`${baseUrl}${endpoint}`,data,config)

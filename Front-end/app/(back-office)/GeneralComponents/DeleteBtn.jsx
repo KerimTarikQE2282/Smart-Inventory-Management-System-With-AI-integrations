@@ -6,6 +6,14 @@ import Swal from 'sweetalert2'
 import axios from 'axios';
 
 export default function DeleteBtn(props) {
+  const User_role =  JSON?.parse(global?.window?.localStorage.getItem('INVENTORY_USER_TOKEN') || '{}');
+  const authentication_token=`Bearer_${User_role}`
+  var config = {
+  headers: {
+    'Content-Type': 'application/json',
+    'authorization': authentication_token
+  },
+};
   const router = useRouter();
     const {resourceTitle,id}=props
     console.log(resourceTitle,id)
@@ -23,7 +31,7 @@ export default function DeleteBtn(props) {
         confirmButtonText: "Yes, delete it!"
       }).then(async (result) => {
         if (result.isConfirmed) {
-             await axios.delete(` http://localhost:3002/api/v1/${resourceTitle}/${id}`);
+             await axios.delete(` http://localhost:3002/api/v1/${resourceTitle}/${id}`,config);
           //  router.refresh();
           await Swal.fire({
             title: "Deleted!",
