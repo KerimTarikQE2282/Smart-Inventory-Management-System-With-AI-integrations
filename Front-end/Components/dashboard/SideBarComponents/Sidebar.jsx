@@ -47,29 +47,29 @@ function Sidebar() {
        <span> Home</span> 
        </Link>
        
-   { (User.role=="admin"||User.role=="warehouse_personnel") &&  <InventorySideBarComponent location={location}/>}
+   { (req.user.role=="admin"||req.user.role=="warehouse_personnel") &&  <InventorySideBarComponent location={location}/>}
       
        
         
 
 
 {/*                            */}
-{ (User.role=="admin" || User.role=="sales_personnel") &&       <SalesSideBarComponent location={location}/> }       
+{ (req.user.role=="admin" || req.user.role=="sales_personnel") &&       <SalesSideBarComponent location={location}/> }       
     
-{User.role=="admin"  &&  <UserManagement location={location}/>}
+{req.user.role=="admin"  &&  <UserManagement location={location}/>}
 
        <Link href={"#"} className='flex items-center space-x-2 p-2'>
-{User.role=="admin"  &&      <>  <BrainCircuit className='w-4 h-4'/>  <span> AI</span> </>
+{req.user.role=="admin"  &&      <>  <BrainCircuit className='w-4 h-4'/>  <span> AI</span> </>
 }      
        </Link>
 
        <Link href={"#"} className='flex items-center space-x-2 p-2'>
-{ User.role=="admin"  &&      <> <BarChart4 className='w-4 h-4'/><span> Reports</span> </> 
+{ req.user.role=="admin"  &&      <> <BarChart4 className='w-4 h-4'/><span> Reports</span> </> 
 }       
        </Link>
 
        <Link href={"#"} className='flex items-center space-x-2 p-2'>
-{ User.role=="admin"  &&      <> <FolderClosed className='w-4 h-4'/>  <span> Documents</span> </> 
+{ req.user.role=="admin"  &&      <> <FolderClosed className='w-4 h-4'/>  <span> Documents</span> </> 
 }      
        </Link>
 

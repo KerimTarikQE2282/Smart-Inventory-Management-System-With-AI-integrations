@@ -2,7 +2,9 @@
 const supplier = require('../../models/Store/supplier');
 
 const getAllSuppliers = async (req, res) => {
- 
+  if(req.user.role !== 'admin' ) {
+    throw new BadRequestError('Access Denied');
+  }
     const suppliers = await supplier.find({});
     res.status(200).json({ suppliers });
  
@@ -10,7 +12,9 @@ const getAllSuppliers = async (req, res) => {
 
 
 const createSupplier=async (req, res) => {
-   
+  if(req.user.role !== 'admin' ) {
+    throw new BadRequestError('Access Denied');
+  }
     const newSupplier=await supplier.create(req.body)
     res.status(200).json({newSupplier})
  
@@ -18,6 +22,9 @@ const createSupplier=async (req, res) => {
 
 
 const UpdateSupplier=async (req, res) => {
+  if(req.user.role !== 'admin' ) {
+    throw new BadRequestError('Access Denied');
+  }
     const { name } = req.body
     const id= req.params.id;
     const SupplierExists = await supplier.findOne({_id:id})
@@ -33,6 +40,9 @@ const UpdateSupplier=async (req, res) => {
 };
 
 const deleteSupplier=async (req, res) => {
+  if(req.user.role !== 'admin' ) {
+    throw new BadRequestError('Access Denied');
+  }
     const { name } = req.body
     const id= req.params.id;
     const SupplierExists = await supplier.findOne({_id:id})
@@ -49,6 +59,9 @@ const deleteSupplier=async (req, res) => {
 
 
 const getSupplierById = async (req, res) => {
+  if(req.user.role !== 'admin' ) {
+    throw new BadRequestError('Access Denied');
+  }
       const id= req.params.id;
       const SupplierExists = await supplier.findOne({_id:id});
       if(!SupplierExists){
@@ -60,7 +73,9 @@ const getSupplierById = async (req, res) => {
 
 
   const searchSupplier = async (req, res) => {
-  
+    if(req.user.role !== 'admin' ) {
+      throw new BadRequestError('Access Denied');
+    }
       const Name  = req.body;
   
       if (!Name) {

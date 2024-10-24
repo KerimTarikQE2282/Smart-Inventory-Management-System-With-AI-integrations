@@ -7,7 +7,9 @@ const CustomerModel=require('../../models/Store/Customer')
 
 //Get All Fully Payed Sales  
 const getAllPayedGeneralSales = async (req, res) => {
-   
+  if(req.user.role !== 'admin' && req.user.role !== 'sales_personnel') {
+    throw new BadRequestError('Access Denied');
+  }
       const AllGeneralSales = await GeneralSaleModel.find(
         { billingStatus: "paid" },
         { _id: 0, customer: 1, orderDate: 1, orderTotal: 1, paymentMethod: 1 }
@@ -33,6 +35,9 @@ const getAllPayedGeneralSales = async (req, res) => {
 
 //Get all fully Unpayed Sales
   const getAllunPayedGeneralSales = async (req, res) => {
+    if(req.user.role !== 'admin' && req.user.role !== 'sales_personnel') {
+      throw new BadRequestError('Access Denied');
+    }
    
     const AllGeneralSales = await GeneralSaleModel.find(
       {  billingStatus: { $in: ["unpaid", "partially paid"] } },
@@ -59,6 +64,9 @@ const getAllPayedGeneralSales = async (req, res) => {
 };
 //Get Specific Unpayed General Sales
 const getAllunPayedGeneralSalesByOrderNumber = async (req, res) => {
+  if(req.user.role !== 'admin' && req.user.role !== 'sales_personnel') {
+    throw new BadRequestError('Access Denied');
+  }
    
   const AllGeneralSales = await GeneralSaleModel.find(
     {  billingStatus: { $in: ["unpaid", "partially paid"],
@@ -87,6 +95,9 @@ const getAllunPayedGeneralSalesByOrderNumber = async (req, res) => {
   
 //get general Sales by order Number
 const getGeneralSalesByOrderNumber = async (req, res) => {
+  if(req.user.role !== 'admin' && req.user.role !== 'sales_personnel') {
+    throw new BadRequestError('Access Denied');
+  }
   const { OrderNumber } = req.params;
 
   if (!OrderNumber) {
@@ -116,6 +127,9 @@ const getGeneralSalesByOrderNumber = async (req, res) => {
 
 
 const updateGeneralSale=async(req,res)=>{
+  if(req.user.role !== 'admin' && req.user.role !== 'sales_personnel') {
+    throw new BadRequestError('Access Denied');
+  }
     const {OrderNumber}=req.params;
     const MyData=req.body;
    

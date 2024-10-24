@@ -4,16 +4,25 @@ const Customer = require('../../models/Store/Customer');
 
 
 const addCustomer = async (req,res) => {
+  if(req.user.role !== 'admin' && req.user.role !== 'sales_personnel') {
+    throw new BadRequestError('Access Denied');
+  }
     const myNewCustomer=await Customer.create(req.body)
     res.status(StatusCodes.OK).json(myNewCustomer)
   }
 
   
 const getAllCustomer=async(req,res)=>{
+  if(req.user.role !== 'admin' && req.user.role !== 'sales_personnel') {
+    throw new BadRequestError('Access Denied');
+  }
     const AllCustomer=await Customer.find({})
     res.status(StatusCodes.OK).json({Customer:AllCustomer,lenght:AllCustomer.length})
   }
 const getCustomerByID=async (req,res)=>{
+  if(req.user.role !== 'admin' && req.user.role !== 'sales_personnel') {
+    throw new BadRequestError('Access Denied');
+  }
     const {id}=req.params;
     if(!id){
       throw new BadRequestError("please provide Id")
@@ -24,6 +33,9 @@ const getCustomerByID=async (req,res)=>{
 
 
 const Update = async (req, res) => {
+  if(req.user.role !== 'admin' && req.user.role !== 'sales_personnel') {
+    throw new BadRequestError('Access Denied');
+  }
     
         const { id } = req.params;
         const updates = req.body;
@@ -42,6 +54,9 @@ const Update = async (req, res) => {
 };
 
 const Edit = async (req, res) => {
+  if(req.user.role !== 'admin' && req.user.role !== 'sales_personnel') {
+    throw new BadRequestError('Access Denied');
+  }
     
         const { id } = req.params;
         const updates = req.body;
@@ -59,7 +74,9 @@ const Edit = async (req, res) => {
 };
 
 const Delete = async (req, res) => {
-    
+  if(req.user.role !== 'admin' && req.user.role !== 'sales_personnel') {
+    throw new BadRequestError('Access Denied');
+  }
         const { id } = req.params;
 
         const deletedCustomer = await Customer.findByIdAndDelete(id);

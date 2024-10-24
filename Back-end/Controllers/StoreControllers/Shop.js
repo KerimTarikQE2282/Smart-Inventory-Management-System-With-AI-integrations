@@ -4,6 +4,9 @@ const InventoryAdjustments=require('../../models/Store/WareHouseItem')
 const ItemModel=require('../../models/Store/item')
 
 const getAllStores = async (req, res) => {
+  if(req.user.role !== 'admin' ) {
+    throw new BadRequestError('Access Denied');
+  }
   try {
     const stores = await Store.find({});
     res.status(200).json({ stores, number: stores.length });
@@ -14,6 +17,9 @@ const getAllStores = async (req, res) => {
 };
 
 const createStore = async (req, res) => {
+  if(req.user.role !== 'admin' ) {
+    throw new BadRequestError('Access Denied');
+  }
   try {
     const { StoreName, StoreLocation,Capacity, StoreDescription, StoreType } = req.body;
     const newStore = await Store.create({ StoreName, StoreLocation, StoreDescription, StoreType ,Capacity});
@@ -25,6 +31,9 @@ const createStore = async (req, res) => {
 };
 
 const updateStore = async (req, res) => {
+  if(req.user.role !== 'admin' ) {
+    throw new BadRequestError('Access Denied');
+  }
   try {
     const { id } = req.params;
     const storeExists = await Store.findById(id);
@@ -42,6 +51,9 @@ const updateStore = async (req, res) => {
 };
 
 const deleteStore = async (req, res) => {
+  if(req.user.role !== 'admin' ) {
+    throw new BadRequestError('Access Denied');
+  }
   try {
     const { id } = req.params;
     const storeExists = await Store.findById(id);
@@ -59,6 +71,9 @@ const deleteStore = async (req, res) => {
 };
 
 const getStoreById = async (req, res) => {
+  if(req.user.role !== 'admin' ) {
+    throw new BadRequestError('Access Denied');
+  }
   try {
     const { id } = req.params;
     const storeExists = await Store.findById(id);
@@ -77,7 +92,9 @@ const getStoreById = async (req, res) => {
 
 
 const searchStore = async (req, res) => {
-
+  if(req.user.role !== 'admin' && req.user.role !== 'sales_personnel') {
+    throw new BadRequestError('Access Denied');
+  }
   const { Name } = req.body;
 
   if (!Name) {
@@ -100,6 +117,9 @@ const searchStore = async (req, res) => {
 };
 
 const getAllContainedShopItems = async (req, res) => {
+  if(req.user.role !== 'admin' && req.user.role !== 'sales_personnel') {
+    throw new BadRequestError('Access Denied');
+  }
    try {
     const wareHouseId = req.params.wareHouseId;
 

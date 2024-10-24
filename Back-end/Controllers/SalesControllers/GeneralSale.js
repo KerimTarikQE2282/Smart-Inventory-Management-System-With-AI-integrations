@@ -6,6 +6,9 @@ const OrderItem = require('../../models/Sale/OrderItem');
 //TODO  dont forget to specify created by after specifyint 
 // Add General sales
 const addGeneralSale= async (req,res) => {
+  if(req.user.role !== 'admin' || req.user.role !== 'sales_personnel') {
+    throw new BadRequestError('Access Denied');
+  }
 console.log("🚀 ==> file: GeneralSale.js:9 ==> addGeneralSale ==> req:", req.body);
 
 
@@ -73,6 +76,9 @@ console.log("🚀 ==> file: GeneralSale.js:9 ==> addGeneralSale ==> req:", req.b
 
 //Pay credits
 const payCredit= async (req,res)=>{
+  if(req.user.role !== 'admin' && req.user.role !== 'sales_personnel') {
+    throw new BadRequestError('Access Denied');
+  }
   const {OrderNumber,payedAmount}=req.body
   console.log("🚀 ==> file: GeneralSale.js:77 ==> payCredit ==> OrderNumber,payedAmount:", OrderNumber,payedAmount);
 

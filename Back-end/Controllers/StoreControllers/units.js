@@ -3,7 +3,9 @@ const Unit = require('../../models/Store/units');
 const { BadRequestError } = require('../../errors');
 
 const getAllUnits = async (req, res) => {
-    
+  if(req.user.role !== 'admin' && req.user.role !== 'warehouse_personnel') {
+    throw new BadRequestError('Access Denied');
+  }
         const units = await Unit.find({});
 
         if (units.length === 0) {
@@ -23,6 +25,9 @@ const getAllUnits = async (req, res) => {
   }
      
  const getUnitById = async (req, res) => {
+  if(req.user.role !== 'admin' && req.user.role !== 'warehouse_personnel') {
+    throw new BadRequestError('Access Denied');
+  }
         const id = req.params.id;
         try {
             const unit = await Unit.findById(id);
@@ -39,6 +44,9 @@ const getAllUnits = async (req, res) => {
     };
 
     const deleteUnitById = async (req, res) => {
+      if(req.user.role !== 'admin' && req.user.role !== 'warehouse_personnel') {
+        throw new BadRequestError('Access Denied');
+      }
         const { id } = req.params;
       
         const DeletableUnit = await Unit.findById({ _id: id });
@@ -51,6 +59,9 @@ const getAllUnits = async (req, res) => {
       };
     
     const updateUnitById = async (req, res) => {
+      if(req.user.role !== 'admin' && req.user.role !== 'warehouse_personnel') {
+        throw new BadRequestError('Access Denied');
+      }
         const { id } = req.params;
         console.log("🚀 ==> file: unit.js:28 ==> updateUnitById ==> id:", id);
       
@@ -72,6 +83,9 @@ const getAllUnits = async (req, res) => {
       };
 
 const searchUnit = async (req, res) => {
+  if(req.user.role !== 'admin' && req.user.role !== 'warehouse_personnel') {
+    throw new BadRequestError('Access Denied');
+  }
 
         const {Name}  = req.body;
         console.log("🚀 ==> file: units.js:77 ==> searchUnit ==> req.body:", req.body);

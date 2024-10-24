@@ -7,6 +7,9 @@ const warehouse = require('../../models/Store/warehouse')
 
 //TODO  dont forget to specify created by after specifyint 
 const addItem = async (req,res) => {
+  if(req.user.role !== 'admin') {
+    throw new BadRequestError('Access Denied');
+  }
   console.log("🚀 ==> file: items.js:8 ==> addItem ==> req:", req);
 
   const myNewItem=await Item.create(req.body)
@@ -18,6 +21,9 @@ const getAllItems=async(req,res)=>{
   res.status(StatusCodes.OK).json({items:AllItems,lenght:AllItems.length})
 }
 const getItemsByID=async (req,res)=>{
+  if(req.user.role !== 'admin' && req.user.role !== 'warehouse_personnel') {
+    throw new BadRequestError('Access Denied');
+  }
   const {id}=req.params;
   if(!id){
     throw new BadRequestError("please provide Id")
@@ -28,6 +34,9 @@ const getItemsByID=async (req,res)=>{
 
 
 const updateItems=async(req,res)=>{
+  if(req.user.role !== 'admin' ) {
+    throw new BadRequestError('Access Denied');
+  }
   const {id}=req.params;
   console.log("🚀 ==> file: items.js:28 ==> updateItems ==> id:", id);
 
@@ -47,6 +56,9 @@ const updateItems=async(req,res)=>{
 }
 
 const removeItems=async(req,res)=>{
+  if(req.user.role !== 'admin' ) {
+    throw new BadRequestError('Access Denied');
+  }
   const {id}=req.params;
   const DeletableItem=await Item.findById({_id:id});
   if(!DeletableItem || !id){
@@ -58,7 +70,9 @@ const removeItems=async(req,res)=>{
 
 
 const searchItem = async (req, res) => {
-
+  if(req.user.role !== 'admin' && req.user.role !== 'warehouse_personnel') {
+    throw new BadRequestError('Access Denied');
+  }
     const { Name } = req.body;
 
     if (!Name) {
@@ -83,7 +97,9 @@ const searchItem = async (req, res) => {
 
 
 const getAllContainedWareHouseItems = async (req, res) => {
- 
+  if(req.user.role !== 'admin' && req.user.role !== 'warehouse_personnel') {
+    throw new BadRequestError('Access Denied');
+  }
   const ItemId = req.params.itemId;
 
   var itemPlacements={}

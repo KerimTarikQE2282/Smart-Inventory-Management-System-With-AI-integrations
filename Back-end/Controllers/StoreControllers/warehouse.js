@@ -3,8 +3,11 @@ const WareHouseItem = require('../../models/Store/WareHouseItem');
 const InventoryAdjustments=require('../../models/Store/WareHouseItem')  
 const { StatusCodes } = require('http-status-codes');
 const ItemModel=require('../../models/Store/item')
-
+const  {BadRequestError} =require ( '../../errors/index')
 const getAllWarehouses = async (req, res) => {
+  if(req.user.role !== 'admin' && req.user.role !== 'warehouse_personnel') {
+    throw new BadRequestError('Access Denied');
+  }
   try {
     const warehouses = await Warehouse.find({});
     res.status(200).json({ WareHouse:warehouses,number:(warehouses.length) });
@@ -15,6 +18,9 @@ const getAllWarehouses = async (req, res) => {
 };
 
 const createWarehouse = async (req, res) => {
+  if(req.user.role !== 'admin' && req.user.role !== 'warehouse_personnel') {
+    throw new BadRequestError('Access Denied');
+  }
   try {
     const { WareHouseName, WareHouseLocation, WareHouseDescription, WareHouseType,Capacity } = req.body;
     const newWarehouse = await Warehouse.create({ WareHouseName, WareHouseLocation, WareHouseDescription, WareHouseType,Capacity });
@@ -26,6 +32,9 @@ const createWarehouse = async (req, res) => {
 };
 
 const updateWarehouse = async (req, res) => {
+  if(req.user.role !== 'admin' && req.user.role !== 'warehouse_personnel') {
+    throw new BadRequestError('Access Denied');
+  }
   try {
     const { id } = req.params;
     const warehouseExists = await Warehouse.findById(id);
@@ -43,6 +52,9 @@ const updateWarehouse = async (req, res) => {
 };
 
 const deleteWarehouse = async (req, res) => {
+  if(req.user.role !== 'admin' && req.user.role !== 'warehouse_personnel') {
+    throw new BadRequestError('Access Denied');
+  }
   try {
     const { id } = req.params;
     const warehouseExists = await Warehouse.findById(id);
@@ -60,6 +72,9 @@ const deleteWarehouse = async (req, res) => {
 };
 
 const getWarehouseById = async (req, res) => {
+  if(req.user.role !== 'admin' && req.user.role !== 'warehouse_personnel') {
+    throw new BadRequestError('Access Denied');
+  }
   try {
     const { id } = req.params;
     const warehouseExists = await Warehouse.findById(id);
@@ -78,6 +93,9 @@ const getWarehouseById = async (req, res) => {
 
 
 const searchWareHouse = async (req, res) => {
+  if(req.user.role !== 'admin' && req.user.role !== 'warehouse_personnel') {
+    throw new BadRequestError('Access Denied');
+  }
 
   const { Name } = req.body;
 
@@ -100,6 +118,9 @@ const searchWareHouse = async (req, res) => {
 
 };
 const getAllContainedWareHouseItems = async (req, res) => {
+  if(req.user.role !== 'admin' && req.user.role !== 'warehouse_personnel') {
+    throw new BadRequestError('Access Denied');
+  }
  
     const wareHouseId = req.params.wareHouseId;
 
@@ -138,6 +159,12 @@ const getAllContainedWareHouseItems = async (req, res) => {
 };
 
 const getAllContainedWareHouseItemsDetailed = async (req, res) => {
+  console.log("🚀 ==> file: warehouse.js:163 ==> getAllContainedWareHouseItemsDetailed ==> eq.user.role:", req.user.role);
+
+  if(req.user.role !== 'admin' && req.user.role !== 'warehouse_personnel') {
+
+    throw new BadRequestError('Access Denied');
+  }
   try {
     const wareHouseId = req.params.wareHouseId;
 

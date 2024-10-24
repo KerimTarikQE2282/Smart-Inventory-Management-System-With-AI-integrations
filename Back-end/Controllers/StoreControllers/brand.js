@@ -4,6 +4,10 @@ const { BadRequestError } = require('../../errors/')
 
 // Fetch all brands
 const getAllBrands = async (req, res) => {
+  const user = req.user;
+  if(req.user.role !== 'admin') {
+    throw new BadRequestError('Access Denied');
+  }
   try {
     const brands = await Brand.find({});
     res.status(StatusCodes.OK).json({ brands });
@@ -15,6 +19,9 @@ const getAllBrands = async (req, res) => {
 
 // Fetch a brand by ID
 const getBrandById = async (req, res) => {
+  if(req.user.role !== 'admin') {
+    throw new BadRequestError('Access Denied');
+  }
   const { id } = req.params;
 
   const brand = await Brand.findById({ _id: id });
@@ -27,12 +34,18 @@ const getBrandById = async (req, res) => {
 
 // Create a new brand
 const createBrand = async (req, res) => {
+  if(req.user.role !== 'admin') {
+    throw new BadRequestError('Access Denied');
+  }
   const myNewBrand = await Brand.create(req.body);
   res.status(StatusCodes.OK).json(myNewBrand);
 };
 
 // Update a brand by ID
 const updateBrandById = async (req, res) => {
+  if(req.user.role !== 'admin') {
+    throw new BadRequestError('Access Denied');
+  }
   const { id } = req.params;
   console.log("🚀 ==> updateBrandById ==> id:", id);
 
@@ -68,7 +81,9 @@ const deleteBrandById = async (req, res) => {
 
 
 const searchBrand = async (req, res) => {
-
+  if(req.user.role !== 'admin') {
+    throw new BadRequestError('Access Denied');
+  }
     const { Name } = req.body;
     console.log("🚀 ==> file: brand.js:73 ==> searchBrand ==> Name:", Name);
 

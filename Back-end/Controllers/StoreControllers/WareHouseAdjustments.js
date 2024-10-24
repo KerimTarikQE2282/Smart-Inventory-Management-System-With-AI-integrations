@@ -8,6 +8,9 @@ const itemModel = require('../../models/Store/item');
 
 //Add New Item To wareHouse
 const add_New_Item_To_wareHouse = async (req,res) => {
+  if(req.user.role !== 'admin' && req.user.role !== 'warehouse_personnel') {
+    throw new BadRequestError('Access Denied');
+  }
    const item_set=req.body;
    console.log("🚀 ==> file: WareHouseAdjustments.js:13 ==> constadd_New_Item_To_wareHouse= ==> item_set:", item_set);
   //TODO validate if it is a legitimate Item
@@ -91,6 +94,9 @@ const add_New_Item_To_wareHouse = async (req,res) => {
 
 //transfer item From one warehouse to the other
 const Adjust_wareHouse_Item=async (req,res)=>{
+  if(req.user.role !== 'admin' && req.user.role !== 'warehouse_personnel') {
+    throw new BadRequestError('Access Denied');
+  }
 
   const {item,From_warehouse,To_WareHouse,Carton_number,from_Carton_Number,to_Carton_Number}=req.body;
  const MyCarton_number=Carton_number

@@ -4,6 +4,9 @@ const BadRequestError = require('../../errors'); // Adjust the path as necessary
 
 // Fetch all categories
 const getAllCategories = async (req, res) => {
+  if(req.user.role !== 'admin') {
+    throw new BadRequestError('Access Denied');
+  }
   try {
     const categories = await Category.find({});
     res.status(StatusCodes.OK).json({"category": categories });
@@ -15,6 +18,9 @@ const getAllCategories = async (req, res) => {
 
 // Fetch a category by ID
 const getCategoryById = async (req, res) => {
+  if(req.user.role !== 'admin') {
+    throw new BadRequestError('Access Denied');
+  }
   const { id } = req.params;
 
   const category = await Category.findById(id);
@@ -27,12 +33,18 @@ const getCategoryById = async (req, res) => {
 
 // Create a new category
 const createCategory = async (req, res) => {
+  if(req.user.role !== 'admin') {
+    throw new BadRequestError('Access Denied');
+  }
   const newCategory = await Category.create(req.body);
   res.status(StatusCodes.CREATED).json(newCategory);
 };
 
 // Update a category by ID
 const updateCategoryById = async (req, res) => {
+  if(req.user.role !== 'admin') {
+    throw new BadRequestError('Access Denied');
+  }
   const { id } = req.params;
   console.log("🚀 ==> updateCategoryById ==> id:", id);
 
@@ -58,6 +70,9 @@ const updateCategoryById = async (req, res) => {
 
 // Delete a category by ID
 const deleteCategoryById = async (req, res) => {
+  if(req.user.role !== 'admin') {
+    throw new BadRequestError('Access Denied');
+  }
   const { id } = req.params;
 
   const DeletableCategory = await Category.findById({ _id: id });
@@ -71,6 +86,9 @@ const deleteCategoryById = async (req, res) => {
 
 
 const searchCategory = async (req, res) => {
+  if(req.user.role !== 'admin') {
+    throw new BadRequestError('Access Denied');
+  }
 
   const { Name } = req.body;
   console.log("🚀 ==> file: Categorie.js:76 ==> searchCategory ==> Name:",  req.query);
