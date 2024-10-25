@@ -6,7 +6,7 @@ export default  function Update({params:id}) {
 
 
             
-    const {isLoading,data,isError,error,isFetching}=useGetDataById('brands',id);
+    const {isLoading,data,isError,error,isFetching}=useGetDataById('user',id);
    
 return <NewUser initialData={data?.data} isupdate={true}/>
     

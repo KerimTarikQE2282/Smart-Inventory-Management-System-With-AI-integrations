@@ -1,5 +1,5 @@
 "use client"; // Ensure you're in client-side rendering mode
-import { Columns, Pencil, Trash } from 'lucide-react';
+import { Columns, Pencil, Trash, Upload, UploadCloud, UploadIcon } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
 import DeleteBtn from '@/app/(back-office)/GeneralComponents/DeleteBtn';
@@ -32,8 +32,10 @@ export default function DataTable({ name, columns = [''], resourceTitle }) {
   } else {
     return (
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-        <button onClick={exportJson}>Download</button>
-        <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+<button href={"/dashboard/inventory/items/new"} className="p-1 bg-blue-600 rounded-md flex items-center space-x-2 px-3 mb-5" onClick={exportJson}>
+            <UploadIcon className="text-white w-4 h-4" />
+            <span className='text-white'>Export</span>
+          </button>        <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
           <thead className="text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
               {columns.map((title) => {

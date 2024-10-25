@@ -1,24 +1,23 @@
+"use client"
+import DataTable from './Components/table'
+import TabelNavBar from '@/Components/TabelNavBar'
 import React from 'react'
 
-function Purchases() {
-  const test=0;
-  console.log("🚀 ==> file: page.jsx:5 ==> Purchases ==> test:", test);
 
-  console.log("🚀 ==> file: page.jsx:5 ==> Purchases ==> test:", test);
+export default  function Brands() {
+  const columns=['PurchaseOrderId','createdAt','updatedAt'];
+ 
 
-  console.log("🚀 ==> file: page.jsx:5 ==> Purchases ==> test:", test);
-
-  console.log("🚀 ==> file: page.jsx:5 ==> Purchases ==> test:", test);
-
-  console.log("🚀 ==> file: page.jsx:5 ==> Purchases ==> test:", test);
-
-  console.log("🚀 ==> file: page.jsx:5 ==> Purchases ==> test:", test);
-
-  return (
-    <div>
-      <h1>Purchases templ</h1>
-    </div>
-  )
+    return (
+      <div>
+          <TabelNavBar link='/recieving/purchases/new' title='Purchase Order'/>
+         <div className='my-4 p-8'>
+          
+      <DataTable name='PO' columns={columns} resourceTitle='PO'/>
+  
+      </div>
+      </div>
+    )
+  
+  
 }
-
-export default Purchases

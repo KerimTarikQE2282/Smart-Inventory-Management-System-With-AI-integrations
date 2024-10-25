@@ -14,16 +14,18 @@ for (const item of addedItems) {
     // Await the results of the asynchronous operations
     const itemDetails = await itemModel.findOne({ _id: item.item });
     const wareHouseDetails = await warehouse.findOne({ _id: item.StoredAt });
+    console.log("🚀 ==> file: getWareHouseAdjustments.js:17 ==> WareHouseAddedItems ==> wareHouseDetails:", wareHouseDetails);
+
 
     // Push the resolved data into resJson
     resJson.push({
-        item: itemDetails.title,
-        StoredAt: wareHouseDetails.WareHouseName,
-        createdAt: item.createdAt,
-        carton: item.Carton_Number
+        item:itemDetails?.title,
+        StoredAt: wareHouseDetails?.WareHouseName,
+        createdAt: item?.createdAt,
+        carton: item?.Carton_Number
     });
 }
-    res.status(StatusCodes.OK).json(resJson)
+    res.status(StatusCodes.OK).json(resJson.reverse())
 }
 
 const WareHouseTransferedItems = async (req, res) => {
@@ -37,13 +39,13 @@ const WareHouseTransferedItems = async (req, res) => {
     
         // Push the resolved data into resJson
         resJson.push({
-            item: itemDetails.title,
-            StoredAt: wareHouseDetails.WareHouseName,
-            createdAt: item.createdAt,
-            carton: item.Carton_Number
+            item:itemDetails?.title,
+        StoredAt: wareHouseDetails?.WareHouseName,
+        createdAt: item?.createdAt,
+        carton: item?.Carton_Number
         });
     }
-        res.status(StatusCodes.OK).json(resJson)
+        res.status(StatusCodes.OK).json(resJson.reverse())
 }
 
 module.exports={WareHouseAddedItems,WareHouseTransferedItems}

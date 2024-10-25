@@ -12,6 +12,14 @@ import axios from 'axios'
 import toast from 'react-hot-toast'
 
 export default function DataTable({ name, columns = [''], resourceTitle }) {
+  const User_role =  JSON?.parse(global?.window?.localStorage.getItem('INVENTORY_USER_TOKEN') || '{}');
+  const authentication_token=`Bearer ${User_role}`
+  var config = {
+  headers: {
+    'Content-Type': 'application/json',
+    'authorization': authentication_token
+  },
+};
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
   const { isLoading, data, isError, error, isFetching } = useGetData(name);
@@ -36,7 +44,7 @@ export default function DataTable({ name, columns = [''], resourceTitle }) {
     const baseUrl = `http://localhost:3002/api/v1/${name}`;
     const url = `${baseUrl}/search`;
     try {
-      const res = await axios.post(url, formData);
+      const res = await axios.post(url, formData,config);
       setData(res.data); // Update the state with new data
       console.log("🚀 ==> Response Data:", res.data);
     } catch (error) {

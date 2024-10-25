@@ -13,21 +13,23 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
 
-    <StoreProvider>
     <html lang="en">
+          <StoreProvider>
+
       <head>
       {/* <link rel="icon" href={favicon} /> */}
       </head>
-      <body className={inter.className}>
+      <body className={inter.className} suppressHydrationWarning>
       <Toaster
       position="top-center"
       reverseOrder={false}
       />
     {children}
         </body>
+        </StoreProvider>
     </html>
 
-    </StoreProvider>
+  
   
   )
 }

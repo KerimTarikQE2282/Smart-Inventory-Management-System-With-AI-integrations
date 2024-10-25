@@ -81,6 +81,7 @@ const deleteBrandById = async (req, res) => {
 
 
 const searchBrand = async (req, res) => {
+  console.log(req.user.role)
   if(req.user.role !== 'admin') {
     throw new BadRequestError('Access Denied');
   }

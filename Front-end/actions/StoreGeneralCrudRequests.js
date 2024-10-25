@@ -39,7 +39,7 @@ dispatch({
     }
   } else {
     setLoading(false);
-    toast.error('Something went wrong!', { icon: '❌' });
+    toast.error(response.data, { icon: '❌' });
     dispatch({
       type: `CREATE_${name}_FAILED`,
       payload: res.data,
@@ -48,7 +48,8 @@ dispatch({
 } catch (error) {
   console.error(error);
   setLoading(false);
-  toast.error('Something went wrong!', { icon: '❌' });
+  console.log('errrrrrrrrrrrrrrrrrorrrrrrrrrrrrrr',error.response?.data?.msg);
+  toast.error(error.response?.data?.msg, { icon: '❌' });
   dispatch({
     type: `CREATE_${name}_FAILED`,
     payload: error.response?.data || error.message,

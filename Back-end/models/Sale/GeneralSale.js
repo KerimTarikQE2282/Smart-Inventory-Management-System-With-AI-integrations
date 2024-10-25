@@ -32,7 +32,7 @@ const GeneralSaleSchema = new mongoose.Schema({
   },
   paymentMethod: {
     type: String,
-    enum: ["credit card", "debit card", "paypal", "bank transfer", "cash"],
+    enum: ["Cash", "Tele Birr", "Cbe birr", "Other bank transfer"],
     required: [true, "Please provide a payment method"]
   },
   salesRepresentative: {

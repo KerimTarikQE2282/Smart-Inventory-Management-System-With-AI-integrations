@@ -5,8 +5,8 @@ const getAllSuppliers = async (req, res) => {
   if(req.user.role !== 'admin' ) {
     throw new BadRequestError('Access Denied');
   }
-    const suppliers = await supplier.find({});
-    res.status(200).json({ suppliers });
+    const mysupplier = await supplier.find({});
+    res.status(200).json({ supplier :mysupplier});
  
 };
 

@@ -1,23 +1,23 @@
-import DataTable from '@/Components/dashboard/DataTable'
+"use client"
+import DataTable from '../Componenets/DataTable'
 import TabelNavBar from '@/Components/TabelNavBar'
-import { getData } from '@/actions/storeActions/StoreGeneralCrudRequests/getData'
 import React from 'react'
 
-export default async function Suppliers() {
-const columns=['name','phone','email','PaymentTerms']
-  const Suppliers=await getData('Supplier')
-  console.log(Suppliers)
- 
-  return (
-    <div>
-    {/* { header } */}
-  <TabelNavBar link='/recieving/Supplier/new/' title='Suppliers'/>
-    {/* { Table  } */}
-    <div className='my-4 p-8'>
-    <DataTable Data={ Suppliers} resourceTitle={'Supplier'} columns={columns}/>
 
-    </div>
-     
-  </div>
-  )
+export default  function Brands() {
+  const columns=['name','phone','email','PaymentTerms']
+ 
+
+    return (
+      <div>
+          <TabelNavBar link='/recieving/Supplier/new' title='Suppliers'/>
+         <div className='my-4 p-8'>
+          
+      <DataTable name='supplier' columns={columns} resourceTitle='Supplier'/>
+  
+      </div>
+      </div>
+    )
+  
+  
 }

@@ -13,7 +13,7 @@ function Inventory() {
       icon: <User strokeWidth=".5px" className='w-36 h-36' color='#f25944' />,
       phrase: "Create instances of Customers to track .",
       Buttontext: "View All Customers",
-      link: "/dashboard/inventory/itemGroups",
+      link: "/selling/customer",
       linkTitle: 'Item Groups',  // Adjusted to match the title
       enabled: true
   },

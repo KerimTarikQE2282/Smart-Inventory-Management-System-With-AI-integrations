@@ -64,7 +64,10 @@ export default function WarehousePage() {
       <div className="relative w-full h-auto bg-white shadow-lg rounded-lg p-6 md:p-10 flex items-center ">
         {/* Warehouse Title */}
         <h1 className="text-xl md:text-4xl font-bold text-gray-800 flex flex-row gap-5">
-          <Image src={WareHouseImage} className='w-16 h-14'/>{WareHouseDetailsData?.StoreName} Store 
+      <div>
+      <Image src={WareHouseImage} className='w-16 h-14'/>{WareHouseDetailsData?.StoreName} Store 
+
+      </div>
         </h1>
       </div>
 

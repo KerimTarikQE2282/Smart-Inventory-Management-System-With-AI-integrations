@@ -48,7 +48,7 @@ export default function SalesModal(props) {
     <div className="w-full h-[94.8vh] bg-black absolute top-0" style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
     <div className="bg-white relative left-[2vw] top-[2vh] w-[85vw] opacity-100 rounded-lg shadow-lg px-10 py-5 min-h-[100vh]" ref={componentRef}>
       <div className="flex flex-row justify-between">
-        <Image src={Logo} alt="Logo" className="w-[20vw] h-[18vh] relative" />
+      
         <div className="shop-info text-right">
           <p className="text-base mb-1">Phone#: 0911240914</p>
           <p className="text-base mb-1">Fax#: +0000-000-00-00</p>

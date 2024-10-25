@@ -13,7 +13,7 @@ const columns=['title','description']
   return (
     <div>
     {/* { header } */}
-  <TabelNavBar link='/storing/Categories/new/' title='Categories'/>
+  <TabelNavBar link='/storing/category/new/' title='categoty'/>
     {/* { Table  } */}
     <div className='my-4 p-8'>
     <DataTable name='category' columns={columns} resourceTitle={'category'}/>

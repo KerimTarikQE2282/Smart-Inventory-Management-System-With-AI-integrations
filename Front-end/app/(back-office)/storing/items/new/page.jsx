@@ -30,7 +30,7 @@ export default function NewItem(props) {
         setUnits(UnitsData.unit);
         setBrands(BrandData.brands);
         setWarehouses(WareHouseData.WareHouse);
-        setSuppliers(SupplierData.suppliers);
+        setSuppliers(SupplierData.supplier);
       } catch (error) {
         console.error("Error fetching data", error);
       }
@@ -38,7 +38,7 @@ export default function NewItem(props) {
 
     fetchData();
   }, []); // Empty dependency array means this runs once when the component mounts.
-  console.log("🚀 ==> file: page.jsx:13 ==> NewItem ==> brands:", brands);
+  console.log("🚀 ==> file: page.jsx:13 ==> NewItem ==> brands:", suppliers);
 
   return (
     <div>

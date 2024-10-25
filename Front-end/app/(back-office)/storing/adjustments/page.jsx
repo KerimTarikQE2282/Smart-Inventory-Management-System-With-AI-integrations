@@ -19,11 +19,6 @@ export default  function NewAdjustments({items,WareHouses}) {
       title:'View All Stock individually',
       icon:<MinusCircle className='w-4 h-4 mr-2'/>,
       form:'transfer'
-    },
-    {
-      title:'View Goods sent to shops',
-      icon:<Truck className='w-4 h-4 mr-2'/>,
-      form:'Shop'
     }
   ]
   const columns=['item','StoredAt','createdAt','carton'];

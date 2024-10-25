@@ -7,7 +7,7 @@ import axios from 'axios';
 
 export default function DeleteBtn(props) {
   const User_role =  JSON?.parse(global?.window?.localStorage.getItem('INVENTORY_USER_TOKEN') || '{}');
-  const authentication_token=`Bearer_${User_role}`
+  const authentication_token=`Bearer ${User_role}`
   var config = {
   headers: {
     'Content-Type': 'application/json',

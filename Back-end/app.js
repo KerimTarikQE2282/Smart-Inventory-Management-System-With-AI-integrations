@@ -8,6 +8,7 @@ const items=require('./Routes/Store/items')
 const brand=require('./Routes/Store/brand')
 const supplier=require('./Routes/Buy/supplier')
 const SingleItemSale=require('./Routes/Sale/SingleItemSale')
+const user=require('./Routes/Auth/user')
 const GeneralSales=require('./Routes/Sale/GeneralSale')
 const OrderItem=require('./Routes/Sale/OrderItem')
 const WareHouse=require('./Routes/Store/warehouse')
@@ -16,6 +17,7 @@ const unit=require('./Routes/Store/unit')
 const category=require('./Routes/Store/category')
 const store=require('./Routes/Store/store')
 const customer =require('./Routes/Sale/Customer')
+const PO=require('./Routes/Buy/PO')
 //middlewares
 const errorhandler=require('./middleware/error-handler')
 const notfound=require('./middleware/not-found')
@@ -58,6 +60,10 @@ app.use('/api/v1/category',authermticationMiddleware,category)
 app.use('/api/v1/stores',authermticationMiddleware,store)
 app.use('/api/v1/WareHouseAdjustments/',authermticationMiddleware,WareHouseAdjustments)
 app.use('/api/v1/customer/',authermticationMiddleware,customer)
+app.use('/api/v1/user/',authermticationMiddleware,user)
+app.use('/api/v1/PO/',authermticationMiddleware,PO)
+
+
 
 
 //custom middlewares

@@ -28,7 +28,7 @@ function NewUser({ initialData, isupdate = false, makePOSTApiRequest, makePUTApi
     try {
       if (isupdate) {
         // Update existing record
-        const done = await makePUTApiRequest(`brands/${initialData._id}`, setLoading, formData, 'brands');
+        const done = await makePUTApiRequest(`user/${initialData._id}`, setLoading, formData, 'user');
         if (done === true) {
           router.replace('/storing/Brands');
         }
@@ -63,7 +63,7 @@ function NewUser({ initialData, isupdate = false, makePOSTApiRequest, makePUTApi
             register={register}
             errors={errors}
           />
-          <TextInput
+        { !isupdate && <TextInput
             label="Password"
             name="password"
             type="password"
@@ -71,7 +71,7 @@ function NewUser({ initialData, isupdate = false, makePOSTApiRequest, makePUTApi
             defaultValue={isupdate ? initialData?.password || '' : ''}
             register={register}
             errors={errors}
-          />
+          />}
           <TextInput
             label="Email"
             name="email"
