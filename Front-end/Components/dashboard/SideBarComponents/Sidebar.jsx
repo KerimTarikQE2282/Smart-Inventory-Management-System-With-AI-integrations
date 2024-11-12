@@ -1,6 +1,6 @@
 "use client"
 
-import { ShoppingCart, Home, BrainCircuit } from 'lucide-react'
+import { ShoppingCart, Home, BrainCircuit, ImageDown } from 'lucide-react'
 import Link from 'next/link'
 import React, { useState, useEffect } from 'react'
 import InventorySideBarComponent from './InventorySideBarComponent'
@@ -9,6 +9,8 @@ import PurchaseSideBarComponent from './PurchaseSideBarComponent'
 import AISideBarComponent from './AiSideBarComponent'
 import UserManagement from './UserManagement'
 import { usePathname } from 'next/navigation'
+import Logo from '../../../Resources/Screen Shot 2024-09-05 at 4.30.32 PM.png'
+import Image from 'next/image'
 
 function Sidebar() {
   const pathname = usePathname();
@@ -36,8 +38,12 @@ function Sidebar() {
       <div className='flex-col'>
         {/* Logo */}
         <Link href={"#"} className='flex space-x-2 bg-slate-950 items-center py-3 px-2'>
-          <ShoppingCart />
-          <span className='font-semibold text-l'>Inventory</span>
+        <Image
+        className="w-10 h- object-cover"
+        src={Logo}
+        alt={ 'Warehouse Item'}
+      />
+          <span className='font-semibold text-l'>OAG I.S</span>
         </Link>
         {/* Links */}
         <div className='flex flex-col gap-3 px-3 py-6'>

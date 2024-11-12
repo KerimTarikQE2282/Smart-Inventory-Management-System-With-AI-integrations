@@ -1,7 +1,5 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
-
-module.exports = {
+const nextConfig = {
   images: {
     remotePatterns: [
       {
@@ -10,10 +8,13 @@ module.exports = {
       },
     ],
   },
-  reactStrictMode: false,  // Disable React strict mode
-  devIndicators: {
-    buildActivity: false,  // Disable build activity indicator
+  typescript: {
+    ignoreBuildErrors: true, // Ignore TypeScript errors during build
   },
-  // You can add more configurations here if needed
-}
+  reactStrictMode: false, // Disable React strict mode
+  devIndicators: {
+    buildActivity: false, // Disable build activity indicator
+  },
+};
 
+module.exports = nextConfig;

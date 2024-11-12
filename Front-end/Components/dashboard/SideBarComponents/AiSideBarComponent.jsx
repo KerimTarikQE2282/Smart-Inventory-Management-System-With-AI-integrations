@@ -11,17 +11,17 @@ function InventorySideBarComponent(props) {
     
     const inventoryLinks=[
       {
-        name:"Sckikit Learn ",
+        name:"Quantity Sold Forcaster",
         link:"/AI/Regression/RegressionSingle",
         icon:<Wallpaper className='w-4 h-4'/>
       },
       {
-        name:"APriori ",
+        name:"Associated Items Sold",
         link:"/AI/Apriori",
         icon:<Wallpaper className='w-4 h-4'/>
       },
       {
-        name:"Eclat ",
+        name:"Most Sold Items",
         link:"/AI/eclat",
         icon:<Wallpaper className='w-4 h-4'/>
       },

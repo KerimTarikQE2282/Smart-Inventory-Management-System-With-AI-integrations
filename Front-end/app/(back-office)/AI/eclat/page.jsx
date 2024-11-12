@@ -37,7 +37,7 @@ const FrequentItemsetsChart = () => {
 
   return (
     <div className="w-full h-96">
-      <h2 className="text-center text-lg font-semibold mb-4">Frequent Itemsets Support By Eclat</h2>
+      <h2 className="text-center text-lg font-semibold mb-4">Frequent Itemsets sold items Overtime</h2>
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" />
