@@ -46,7 +46,7 @@ app.use(cors())
 
 //TODO authentication middleware is supposed to be added to the routes that have to be used after the user has logged in 
 //routes
-app.use('/api/v1',authermticationMiddleware,auth)
+app.use('/api/v1',auth)
 app.use('/api/v1/brands',authermticationMiddleware,brand)
 app.use('/api/v1/supplier',authermticationMiddleware,supplier)
 app.use('/api/v1/items',authermticationMiddleware,items)
