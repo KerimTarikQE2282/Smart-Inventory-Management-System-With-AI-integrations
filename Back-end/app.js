@@ -47,21 +47,21 @@ app.use(cors())
 //TODO authentication middleware is supposed to be added to the routes that have to be used after the user has logged in 
 //routes
 app.use('/api/v1',auth)
-app.use('/api/v1/brands',authermticationMiddleware,brand)
-app.use('/api/v1/supplier',authermticationMiddleware,supplier)
-app.use('/api/v1/items',authermticationMiddleware,items)
-app.use('/api/v1/SingleItemSale',authermticationMiddleware,SingleItemSale)
-app.use('/api/v1/GeneralSales/',authermticationMiddleware,GeneralSales)
-app.use('/api/v1/WareHouse/',authermticationMiddleware,WareHouse)
-app.use('/api/v1/units/',authermticationMiddleware,unit)
-app.use('/api/v1/WareHouseAdjustments/',authermticationMiddleware,WareHouseAdjustments)
-app.use('/api/v1/unit',authermticationMiddleware,unit)
-app.use('/api/v1/category',authermticationMiddleware,category)
-app.use('/api/v1/stores',authermticationMiddleware,store)
-app.use('/api/v1/WareHouseAdjustments/',authermticationMiddleware,WareHouseAdjustments)
-app.use('/api/v1/customer/',authermticationMiddleware,customer)
-app.use('/api/v1/user/',authermticationMiddleware,user)
-app.use('/api/v1/PO/',authermticationMiddleware,PO)
+app.use('/api/v1/brands',brand)
+app.use('/api/v1/supplier',supplier)
+app.use('/api/v1/items',items)
+app.use('/api/v1/SingleItemSale',SingleItemSale)
+app.use('/api/v1/GeneralSales/',GeneralSales)
+app.use('/api/v1/WareHouse/',WareHouse)
+app.use('/api/v1/units/',unit)
+app.use('/api/v1/WareHouseAdjustments/',WareHouseAdjustments)
+app.use('/api/v1/unit',unit)
+app.use('/api/v1/category',category)
+app.use('/api/v1/stores',store)
+app.use('/api/v1/WareHouseAdjustments/',WareHouseAdjustments)
+app.use('/api/v1/customer/',customer)
+app.use('/api/v1/user/',user)
+app.use('/api/v1/PO/',PO)
 
 
 
@@ -76,7 +76,7 @@ const port=3002 || process.env.PORT;
 
 const start=async ()=>{
     try {
-        await connectDB(process.env.DATABASE_URL) 
+        await connectDB('mongodb+srv://kerimtarikqe2282:fiz5ljitxvNCb9zd@cluster0.copqm7b.mongodb.net/inventoryDB?retryWrites=true&w=majority&appName=Cluster0') 
         app.listen(port,()=>{
             console.log('server running on port ..... ',port) 
         }) 
