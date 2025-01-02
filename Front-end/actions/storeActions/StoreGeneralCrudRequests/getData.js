@@ -1,5 +1,5 @@
 export async function getData(url) {
-    const baseUrl = 'http://localhost:3002/api/v1';
+    const baseUrl = 'http://https://smart-inventory-management-system-with.onrender.com/api/v1/';
    const User_role =  JSON?.parse(global?.window?.localStorage.getItem('INVENTORY_USER_TOKEN') || '{}');
   const authentication_token=`Bearer ${User_role}`
 

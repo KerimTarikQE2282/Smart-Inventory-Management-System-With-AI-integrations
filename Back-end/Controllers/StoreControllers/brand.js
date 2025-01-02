@@ -4,7 +4,9 @@ const { BadRequestError } = require('../../errors/')
 
 // Fetch all brands
 const getAllBrands = async (req, res) => {
-  const user = req.user;
+  console.log('hello world')
+  console.log("🚀 ==> file: brand.js:8 ==> getAllBrands ==> user:",  req.user);
+
   if(req.user.role !== 'admin') {
     throw new BadRequestError('Access Denied');
   }

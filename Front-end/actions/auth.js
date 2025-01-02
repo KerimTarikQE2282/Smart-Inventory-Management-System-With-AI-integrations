@@ -63,7 +63,7 @@ import {
                 'Content-Type': 'application/json'
             }
         };
-     const url='http://localhost:3002/api/v1/?email='+ data.Email +'&password='+data.Password+''
+     const url='http://smart-inventory-management-system-with.onrender.com/api/v1/?email='+ data.Email +'&password='+data.Password+''
         
     
        try {

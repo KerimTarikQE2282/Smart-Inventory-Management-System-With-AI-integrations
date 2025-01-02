@@ -72,7 +72,7 @@ function header({user}) {
  
      <div className="flex items-center gap-2 ml-2">
        
-       {User?.profilePicture && (
+       {/* {User?.profilePicture && (
   <Image 
     src={User.profilePicture} 
     alt="User Profile Picture" 
@@ -80,7 +80,7 @@ function header({user}) {
     height={40} 
     className="rounded-full ml-5" 
   />
-)}       
+)}        */}
      </div>
    </div>
  </div>
