@@ -41,7 +41,7 @@ export default function DataTable({ name, columns = [''], resourceTitle }) {
 
   const onSubmit = async (formData) => {
     console.log("🚀 ==> onSubmit ==> data:", formData);
-    const baseUrl = `http://https://smart-inventory-management-system-with.onrender.com/api/v1//${name}`;
+    const baseUrl = `http://http://localhost:3002/api/v1//${name}`;
     const url = `${baseUrl}/search`;
     try {
       const res = await axios.post(url, formData,config);
@@ -63,7 +63,7 @@ export default function DataTable({ name, columns = [''], resourceTitle }) {
   if (isLoading) {
     return (
     <div className="relative h-[50vh] flex items-start justify-center ">
-    <div className='mt-[20vw]'>
+    <div className='mt-[10vw]'>
         <Loader /> 
     </div>
 </div>

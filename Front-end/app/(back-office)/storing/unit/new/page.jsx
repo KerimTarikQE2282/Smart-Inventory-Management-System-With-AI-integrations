@@ -8,6 +8,7 @@ import {makePOSTApiRequest} from "@/actions/StoreGeneralCrudRequests";
 import  {makePUTApiRequest} from "@/actions/StoreGeneralCrudRequests";
 import { useGetDataById } from "@/hooks/useGetDataById";
 import { connect } from "react-redux";
+import { Router } from "next/router";
 
 function NewUnit({initialData,isupdate,makePOSTApiRequest,makePUTApiRequest}) {
   
@@ -42,7 +43,7 @@ function NewUnit({initialData,isupdate,makePOSTApiRequest,makePUTApiRequest}) {
        setLoading(true)
  
        await makePOSTApiRequest('unit',setLoading,data,'WareHouse')
-       router.replace('/storing/Brands');
+       //Router.Push('/storing/Brands');
 
      }
  

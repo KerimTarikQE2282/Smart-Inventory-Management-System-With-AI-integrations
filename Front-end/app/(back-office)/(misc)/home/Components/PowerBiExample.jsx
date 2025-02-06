@@ -4,6 +4,7 @@ import {models} from 'powerbi-client'
 export default function PowerBiExample() {
   return (
     <div>
+		<h1>Hello world</h1>
 
 <PowerBIEmbed
 	embedConfig = {{

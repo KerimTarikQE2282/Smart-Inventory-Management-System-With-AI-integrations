@@ -60,36 +60,38 @@ export default function WarehousePage() {
     <div className="p-5 bg-gray-50 min-h-screen">
 
 
-      <div className="relative w-full h-auto bg-white shadow-lg rounded-lg p-6 md:p-10 flex items-center ">
+      <div className="relative w-full h-auto bg-white shadow-lg rounded-lg p-6 md:p-10 flex items-center gap-10 ">
         {/* Warehouse Title */}
-        <h1 className="text-xl md:text-4xl font-bold text-gray-800 flex flex-row gap-5">
-       
-        </h1>
+    
         <div>
-          <Image src={WareHouseImage} className='w-16 h-14'/>{warehouse?.WareHouseName} WareHouse {WareHouseDetailsData?.WareHouseName}
+          <Image src={WareHouseImage} className='w-36 h-28'/>
+          </div>
+          <div>
+
+      <p className='font-bold text-2xl'>{warehouse?.WareHouseName} WareHouse {WareHouseDetailsData?.WareHouseName}</p>
+          <div className="text-sm font-semibold">Location: <span className="font-normal"> {WareHouseDetailsData?.WareHouseLocation} </span></div>
+  <div className="text-smfont-semibold">Capacity: <span className="font-normal"> {WareHouseDetailsData?.Capacity} </span></div>
+  <div className="text-sm font-semibold">Type: <span className="font-normal">{WareHouseDetailsData?.WareHouseType}</span></div>
+  <div className="text-sm font-semibold">Description :<span className="font-normal"> {WareHouseDetailsData?.WareHouseDescription}</span>                 
+ 
+  
+  </div>
+
           </div>
       </div>
 
       {/* 4x4 Grid Layout */}
-      <div className="grid grid-cols-2 grid-rows-2 items-startgap-4 mt-8">
-      <div className="w-full p-6 shadow-xl flex flex-col space-y-4 bg-white rounded-lg">
-  <div className="text-lg font-semibold">Location: <span className="font-normal"> {WareHouseDetailsData?.WareHouseLocation} </span></div>
-  <div className="text-lg font-semibold">Capacity: <span className="font-normal"> {WareHouseDetailsData?.Capacity} </span></div>
-  <div className="text-lg font-semibold">Type: <span className="font-normal">{WareHouseDetailsData?.WareHouseType}</span></div>
-  <div className="text-lg font-semibold">Description
-    <span className="block font-normal mt-1">
-    {WareHouseDetailsData?.WareHouseDescription}    </span>
-  </div>
-</div>
-
-        <div className="w-full ">
+      <div className="grid grid-cols-2 grid-rows-2 items-start gap-4 mt-8">
+      <div className="w-full ">
         <BarChart data={data} options={options} />
 
         </div>
+
+       
         <div className="w-full h-40  flex items-center justify-center">
           <PieChart data={data} options={options}/>
         </div>
-        <div className="w-full max-h-80 overflow-y-auto">
+        <div className="w-full max-h-80 overflow-y-auto col-span-2">
   <DataTable 
     name={`WareHouse/wareHouseItemsDetailed/${id}`} 
     resourceTitle={'WareHouse'}  

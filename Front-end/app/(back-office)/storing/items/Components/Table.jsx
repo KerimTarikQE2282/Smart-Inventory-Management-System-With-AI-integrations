@@ -26,7 +26,10 @@ export default function DataTable({ name, columns = [''], resourceTitle }) {
   if (isLoading) {
     return (
       <>
-        <Loader />
+      <div className='relative left-[35vw] top-[10vh] w-[10vw]'>
+        <Loader/>
+      </div>
+        
       </>
     );
   } else {

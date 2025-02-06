@@ -66,6 +66,10 @@ app.use('/api/v1/PO/',authermticationMiddleware,PO)
 
 
 
+
+
+
+
 //custom middlewares
 
 app.use(notfound)
@@ -76,7 +80,7 @@ const port=3002 || process.env.PORT;
 
 const start=async ()=>{
     try {
-        await connectDB('mongodb+srv://kerimtarikqe2282:fiz5ljitxvNCb9zd@cluster0.copqm7b.mongodb.net/inventoryDB?retryWrites=true&w=majority&appName=Cluster0') 
+        await connectDB('mongodb://localhost:27017') 
         app.listen(port,()=>{
             console.log('server running on port ..... ',port) 
         }) 

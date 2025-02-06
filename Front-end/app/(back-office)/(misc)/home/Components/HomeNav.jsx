@@ -16,10 +16,19 @@ console.log(pathname)
             title:"DashBoard",
             href:'/dashboard/home/overview',
     }
+    ,
+    {
+        title:"WareHouse Overview",
+        href:'/dashboard/home/WareHouseOverview',
+},
+{
+    title:"Sales Overview",
+    href:'/dashboard/home/SalesOverview',
+}
 ]
 const DisplayNavLinks=navLinks.map((link)=>{
     return(
-        <Link href={link.href} key={link.title} className={`py-3 border-b-4 ${pathname === link.href ? 'border-blue-600' : ''}`}>{link.title}</Link>
+        <a href={link.href} key={link.title} className={`py-3 border-b-4 ${pathname === link.href ? 'border-blue-600' : ''}`}>{link.title}</a>
     )
 })
 

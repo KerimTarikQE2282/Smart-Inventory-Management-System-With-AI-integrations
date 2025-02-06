@@ -49,7 +49,7 @@ function InventorySideBarComponent(props) {
   return (
    <div>
       <Collapsible >
-      <CollapsibleTrigger  className={props.location=="storing"?'flex items-center space-x-2 p-2 bg-blue-500 rounded-md':'flex items-center space-x-2 p-2 '} onClick={changeChevron} >
+      <CollapsibleTrigger  className={props.location=="Ai"?'flex items-center space-x-2 p-2 bg-blue-500 rounded-md':'flex items-center space-x-2 p-2 '} onClick={changeChevron} >
       <BrainCircuit className='w-4 h-4' />
         
         <span> AI</span>

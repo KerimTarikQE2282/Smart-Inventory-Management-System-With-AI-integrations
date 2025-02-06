@@ -26,6 +26,7 @@ function AddinventoryForm({items,WareHouses,makePOSTApiRequest}) {
           makePOSTApiRequest('WareHouseAdjustments/',setLoading,data,'Inventory')
   
     }
+
     
     console.log('from add inevntory form',items)
     return (

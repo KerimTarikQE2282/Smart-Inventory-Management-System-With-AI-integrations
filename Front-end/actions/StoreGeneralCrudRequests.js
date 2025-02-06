@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 
-const baseUrl = 'http://https://smart-inventory-management-system-with.onrender.com/api/v1//';
+const baseUrl = 'http://localhost:3002/api/v1/';
 
 
 
@@ -11,6 +11,8 @@ export const makePOSTApiRequest = (endpoint,setLoading,data,name) => async dispa
   setLoading(true);
   console.log('item addddd 222222')
   const url=`${baseUrl}${endpoint}`
+
+  console.log("🚀 ==> url:", url);
 
   const User_role =  JSON?.parse(global?.window?.localStorage.getItem('INVENTORY_USER_TOKEN') || '{}');
   const authentication_token=`Bearer ${User_role}`
