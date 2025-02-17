@@ -201,4 +201,13 @@ const getAllContainedWareHouseItemsDetailed = async (req, res) => {
 
 
 
-module.exports = { getAllWarehouses, createWarehouse, updateWarehouse, deleteWarehouse, getWarehouseById, searchWareHouse ,getAllContainedWareHouseItems,getAllContainedWareHouseItemsDetailed};
+
+module.exports = { getAllWarehouses, 
+  createWarehouse,
+   updateWarehouse,
+    deleteWarehouse,
+     getWarehouseById,
+      searchWareHouse ,
+      getAllContainedWareHouseItems,
+      getAllContainedWareHouseItemsDetailed,
+      };

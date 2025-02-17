@@ -3,7 +3,7 @@ import React from 'react'
 function page() {
   return (
     <div>
-      sales House Overview
+      Sales Overview
     </div>
   )
 }

@@ -9,7 +9,7 @@ const {
   deleteWarehouse,
   searchWareHouse,
   getAllContainedWareHouseItems,
-  getAllContainedWareHouseItemsDetailed
+  getAllContainedWareHouseItemsDetailed,
 } = require('../../Controllers/StoreControllers/warehouse');
 
 router.get('/', getAllWarehouses);
@@ -20,4 +20,7 @@ router.delete('/:id', deleteWarehouse);
 router.post('/search', searchWareHouse);
 router.get('/wareHouseItems/:wareHouseId', getAllContainedWareHouseItems);
 router.get('/wareHouseItemsDetailed/:wareHouseId', getAllContainedWareHouseItemsDetailed);
+
+
+
 module.exports = router;

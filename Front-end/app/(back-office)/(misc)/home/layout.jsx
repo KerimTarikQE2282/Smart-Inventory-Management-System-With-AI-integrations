@@ -5,7 +5,9 @@ function layout({children}) {
   return (
     <div >
         <HomeNav/>
+        <div className='ml-[3vw] mt-[2vh]'>
       {children}
+      </div>
     </div>
   )
 }

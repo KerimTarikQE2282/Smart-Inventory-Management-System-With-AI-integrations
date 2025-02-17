@@ -1,10 +1,13 @@
+'use client'
+import { usePathname } from 'next/navigation'
 import React from 'react'
 
 function page() {
+  const Path=usePathname()
+  console.log("🚀 ==> page ==> Path:", Path);
+  
   return (
-    <div>
-      <h2>Home</h2>
-    </div>
+    <div>home</div>
   )
 }
 
