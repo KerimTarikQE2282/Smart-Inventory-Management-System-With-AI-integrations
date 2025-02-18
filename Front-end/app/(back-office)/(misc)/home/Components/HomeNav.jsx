@@ -32,8 +32,13 @@ console.log(pathname)
 }
 ,
 {
-    title:"Inventory Summary",
-    href:'/home/InventorySummary',
+    title:"Warehouse Inventory Summary",
+    href:'/home/WareHouseInventorySummary',
+}
+,
+{
+    title:"Store Inventory Summary",
+    href:'/home/StoreInventorySummary',
 }
 ]
 const DisplayNavLinks=navLinks.map((link)=>{

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export const useWarehouseData = () => {
+export const useStoreData = () => {
   const [warehouses, setWarehouses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -9,8 +9,8 @@ export const useWarehouseData = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await axios.get('http://localhost:3002/api/v1/WareHouse/');
-        const warehousesArray = data?.WareHouse || [];
+        const { data } = await axios.get('http://localhost:3002/api/v1/stores/');
+        const warehousesArray = data?.stores || [];
         console.log("🚀 ==> fetchData ==> data:", data);
 
         console.log("🚀 ==> fetchData ==> warehousesArray:", warehousesArray);
@@ -21,7 +21,7 @@ export const useWarehouseData = () => {
           warehousesArray.map(async (warehouse) => {
             try {
               const response = await axios.get(
-                `http://localhost:3002/api/v1/WareHouse/wareHouseItemsDetailed/${warehouse._id}`
+                `http://localhost:3002/api/v1/stores/getAllContainedStoreItemsDetailed/${warehouse._id}`
               );
 
               return response.data;

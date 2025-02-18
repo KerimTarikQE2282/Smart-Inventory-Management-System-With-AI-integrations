@@ -2,6 +2,7 @@ const Store = require('../../models/Store/Shop');
 const { StatusCodes } = require('http-status-codes');
 const InventoryAdjustments=require('../../models/Store/WareHouseItem')  
 const ItemModel=require('../../models/Store/item')
+const WareHouseItem = require('../../models/Store/WareHouseItem');
 
 const getAllStores = async (req, res) => {
   if(req.user.role !== 'admin' ) {
@@ -166,6 +167,93 @@ const getAllContainedShopItems = async (req, res) => {
   }
 };
 
+///////////////////////////////////////////////////////////////////////////////////////////////
 
 
-module.exports = { getAllStores, createStore, updateStore, deleteStore, getStoreById,searchStore,getAllContainedShopItems  };
+
+
+// const getAllContainedWareHouseItems = async (req, res) => {
+//   if(req.user.role !== 'admin' && req.user.role !== 'warehouse_personnel') {
+//     throw new BadRequestError('Access Denied');
+//   }
+ 
+//     const wareHouseId = req.params.wareHouseId;
+
+
+//     // Fetch items that belong to the specific warehouse
+//     const wareHouseItems = await InventoryAdjustments.find({ });
+//     const matchingItems = wareHouseItems.filter(item => {
+//       const itemWentTo = item.itemWentTo;
+
+   
+
+//       return itemWentTo[itemWentTo.length - 1] .equals(wareHouseId);
+//     });
+//     const newMatchingItems = await Promise.all(
+//       matchingItems.map(async (item) => {
+//         const itemName = await ItemModel.findById(item?.item);
+//         return { ...item, itemName: itemName?.title }; // Add the title from itemName
+//       })
+//     );
+    
+
+//     var myItemDisplacement={}
+
+//       for (var i=0;i<newMatchingItems.length;i++){
+//           if(myItemDisplacement[newMatchingItems[i].itemName]==null){
+//             myItemDisplacement[newMatchingItems[i].itemName]=1
+
+//           }
+//           else{
+//             myItemDisplacement[newMatchingItems[i].itemName]=myItemDisplacement[newMatchingItems[i].itemName]+1
+//           }
+//       }
+//     // Send a successful response with the warehouse items
+//     res.status(StatusCodes.OK).json(myItemDisplacement);
+
+// };
+
+const getAllContainedStoreItemsDetailed = async (req, res) => {
+  console.log("🚀 ==> file: warehouse.js:163 ==> getAllContainedWareHouseItemsDetailed ==> eq.user.role:", req.user.role);
+
+  if(req.user.role !== 'admin' && req.user.role !== 'warehouse_personnel') {
+
+    throw new BadRequestError('Access Denied');
+  }
+  try {
+    const wareHouseId = req.params.wareHouseId;
+
+    // Fetch items that belong to the specific warehouse
+    const wareHouseItems = await InventoryAdjustments.find({});
+    
+    // Filter items based on the warehouse they were last sent to
+    const matchingItems = wareHouseItems.filter(item => {
+      const itemWentTo = item.itemWentTo;
+      return itemWentTo[itemWentTo.length - 1].equals(wareHouseId);
+    });
+
+    // Retrieve item names and map the results to include only Carton_Number and itemName
+    const newMatchingItems = await Promise.all(
+      matchingItems.map(async (item) => {
+        const itemName = await ItemModel.findById(item?.item);
+        return {
+          Carton_Number: item?.Carton_Number,
+          itemName: itemName?.title || 'Unknown Item'  // Default to 'Unknown Item' if title is not found
+        };
+      })
+    );
+
+    // Send the filtered data with only Carton_Number and itemName
+    res.status(StatusCodes.OK).json({details:newMatchingItems});
+  } catch (error) {
+    // Handle any errors that occur
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: 'Error fetching warehouse items' });
+  }
+};
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+module.exports = { getAllStores, createStore, updateStore, deleteStore, getStoreById,searchStore,getAllContainedShopItems,getAllContainedStoreItemsDetailed  };
