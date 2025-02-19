@@ -121,8 +121,37 @@ const payCredit= async (req,res)=>{
  
 }
 
+const TodaysSales=async (req,res)=>{
+const Today=new Date()
+const year = Today.getFullYear();
+const month=Today.getMonth()+1
+const day=Today.getDate()
+const TodayDate=`${year}-${month}-${day}`
+const TodaysSalesDaya=await GeneralSaleModel.find({orderDate:TodayDate})
+res.status(200).json({msg:"Todays Sales",body:TodaysSalesDaya})
 
-module.exports = { addGeneralSale,payCredit};
+}
+const weeklySales = async (req, res) => {
+  const today = new Date();
+  const weekAgo = new Date();
+  weekAgo.setDate(today.getDate() - 7); // Corrected the subtraction
+
+  try {
+    const sales = await GeneralSaleModel.find({
+      orderDate: { 
+        $gte: weekAgo, 
+        $lte: today 
+      }
+    });
+
+    res.json(sales); // Send response with sales data
+  } catch (error) {
+    res.status(500).json({ error: error.message }); // Handle errors
+  }
+};
+
+
+module.exports = { addGeneralSale,payCredit,TodaysSales,weeklySales};
   
 
 

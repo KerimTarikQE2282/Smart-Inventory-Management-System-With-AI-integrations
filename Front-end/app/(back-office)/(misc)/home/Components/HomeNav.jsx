@@ -27,7 +27,7 @@ console.log(pathname)
         href:'/home/SalesActivity',
 },
 {
-    title:"Sales Overview",
+    title:"Daily Sales Overview",
     href:'/home/SalesOverview',
 }
 ,

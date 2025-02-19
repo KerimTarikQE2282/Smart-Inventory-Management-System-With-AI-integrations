@@ -1,9 +1,17 @@
-import React from 'react'
 
+import React from 'react'
+import DataTable from '../Components/DataTable'
 function page() {
+  const columns=['orderNumber','customer','orderTotal','paymentMethod'];
+ 
+
   return (
     <div>
-      Sales Overview
+       <div className='my-4 p-8'>
+        
+    <DataTable name='GeneralSales/TodaySales' columns={columns} />
+
+    </div>
     </div>
   )
 }

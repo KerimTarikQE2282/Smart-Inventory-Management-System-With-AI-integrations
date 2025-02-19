@@ -1,10 +1,10 @@
 'use client'
 import React from 'react';
-import {useStoreData} from '../../../../../hooks/useStoreData';
+import {useWarehouseData} from '../../../../../hooks/useWareHouseData';
 import BarChart from '@/Components/ChartComponents/BarCharts';
 
 export default function WarehousePage() {
-  const { warehouses, loading, error } = useStoreData();
+  const { warehouses, loading, error } = useWarehouseData();
   console.log("🚀 ==> WarehousePage ==> warehouses:", warehouses);
 
   if (loading) return <div>Loading...</div>;

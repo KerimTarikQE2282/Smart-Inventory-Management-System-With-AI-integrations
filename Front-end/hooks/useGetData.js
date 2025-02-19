@@ -1,6 +1,6 @@
 import axios from "axios";
 import {useQuery} from "react-query";
-
+;
 
 //http://localhost:3002/api/v1/ online url ++++++++++++++++++++++++++
 const fetchData=(url)=>{
