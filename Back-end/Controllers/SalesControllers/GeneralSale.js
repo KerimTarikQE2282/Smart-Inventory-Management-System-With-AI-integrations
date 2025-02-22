@@ -150,8 +150,26 @@ const weeklySales = async (req, res) => {
   }
 };
 
+const weekwholesales=async (req,res)=>{
+  const today = new Date();
+  const weekAgo = new Date();
+  weekAgo.setDate(today.getDate() - 7); // Corrected the subtraction
 
-module.exports = { addGeneralSale,payCredit,TodaysSales,weeklySales};
+  try {
+    const sales = await GeneralSaleModel.find({
+      orderDate: { 
+        $gte: weekAgo, 
+        $lte: today 
+      }
+    });
+
+    res.json(sales); // Send response with sales data
+  } catch (error) {
+    res.status(500).json({ error: error.message }); // Handle errors
+  }
+}
+
+module.exports = { addGeneralSale,payCredit,TodaysSales,weeklySales,weekwholesales};
   
 
 

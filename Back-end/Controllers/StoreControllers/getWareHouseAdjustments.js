@@ -48,4 +48,29 @@ const WareHouseTransferedItems = async (req, res) => {
         res.status(StatusCodes.OK).json(resJson.reverse())
 }
 
-module.exports={WareHouseAddedItems,WareHouseTransferedItems}
+
+const getTotalItemCounts=async(req,res)=>{
+    const AllItems=await ContainedItemsModel.find({});
+    
+    const AvailableItemQuantities={}
+    AllItems.map(data=>{
+        if(data.item in AvailableItemQuantities){
+            AvailableItemQuantities[data.item]=AvailableItemQuantities[data.item]+1
+        }
+        else{
+            AvailableItemQuantities[data.item]=1
+        }
+    })
+    const Items=await itemModel.find({})
+    const AvailableItemQuantitiesfixed={}
+    Items.map(data=>{
+        
+        if(data._id in AvailableItemQuantities){
+            AvailableItemQuantitiesfixed[data.title]=AvailableItemQuantities[data._id]
+        }
+    })
+    res.status(StatusCodes.OK).json(AvailableItemQuantitiesfixed)
+}
+
+
+module.exports={WareHouseAddedItems,WareHouseTransferedItems,getTotalItemCounts}
