@@ -14,7 +14,7 @@ export default function Home() {
      
    </div>
 
-   // <Link href="/home/overview">home dashboard</Link>
+   // <Link href="/home">home dashboard</Link>
  
   )
 }

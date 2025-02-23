@@ -47,7 +47,7 @@ function Sidebar() {
         </Link>
         {/* Links */}
         <div className='flex flex-col gap-3 px-3 py-6'>
-          <Link href={"/home/overview"} className={location === "home" ? 'flex items-center space-x-2 bg-blue-500 p-2 rounded-md' : 'flex items-center space-x-2 p-2 rounded-md'}>
+          <Link href={"/home"} className={location === "home" ? 'flex items-center space-x-2 bg-blue-500 p-2 rounded-md' : 'flex items-center space-x-2 p-2 rounded-md'}>
             <Home className='w-4 h-4' />
             <span>Home</span>
           </Link>

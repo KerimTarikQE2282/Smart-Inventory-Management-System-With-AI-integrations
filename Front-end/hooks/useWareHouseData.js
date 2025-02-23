@@ -9,7 +9,7 @@ export const useWarehouseData = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await axios.get('http://localhost:3002/api/v1/WareHouse/');
+        const { data } = await axios.get('https://seniorproject-inventory-managemnet-system.onrender.com/api/v1/WareHouse/');
         const warehousesArray = data?.WareHouse || [];
         console.log("🚀 ==> fetchData ==> data:", data);
 
@@ -21,7 +21,7 @@ export const useWarehouseData = () => {
           warehousesArray.map(async (warehouse) => {
             try {
               const response = await axios.get(
-                `http://localhost:3002/api/v1/WareHouse/wareHouseItemsDetailed/${warehouse._id}`
+                `https://seniorproject-inventory-managemnet-system.onrender.com/api/v1/WareHouse/wareHouseItemsDetailed/${warehouse._id}`
               );
 
               return response.data;

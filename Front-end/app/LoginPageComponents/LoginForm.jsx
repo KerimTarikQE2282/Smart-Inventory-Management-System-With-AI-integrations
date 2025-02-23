@@ -28,11 +28,11 @@ import { connect } from 'react-redux'
     login(data,setLoading,setError)
   } 
   if(isAuthenticated){
-    router.replace('/home/overview')  
+    router.replace('/home')  
   }
   React.useEffect(()=>{
     if(user != null){
-      router.push('/home/overview')
+      router.push('/home')
         }},[loading])
   return (
     <div className='h-screen flex items-center justify-center'>

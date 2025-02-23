@@ -33,7 +33,7 @@ export default function DataTable({ name, columns = [''], resourceTitle ,endpoin
 
   const onSubmit = async (formData) => {
     console.log("🚀 ==> onSubmit ==> data:", formData);
-    const baseUrl = `http://http://localhost:3002/api/v1//${name}`;
+    const baseUrl = `http://https://seniorproject-inventory-managemnet-system.onrender.com/api/v1//${name}`;
     const url = `${baseUrl}/search`;
     try {
       const res = await axios.post(url, formData);

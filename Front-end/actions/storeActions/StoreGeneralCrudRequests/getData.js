@@ -1,5 +1,5 @@
 export async function getData(url) {
-    const baseUrl = 'http://localhost:3002/api/v1';
+    const baseUrl = 'https://seniorproject-inventory-managemnet-system.onrender.com/api/v1';
    const User_role =  JSON?.parse(global?.window?.localStorage.getItem('INVENTORY_USER_TOKEN') || '{}');
   const authentication_token=`Bearer ${User_role}`
 

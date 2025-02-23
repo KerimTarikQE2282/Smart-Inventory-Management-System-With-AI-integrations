@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 
-const baseUrl = 'http://localhost:3002/api/v1/';
+const baseUrl = 'https://seniorproject-inventory-managemnet-system.onrender.com/api/v1/';
 
 
 
