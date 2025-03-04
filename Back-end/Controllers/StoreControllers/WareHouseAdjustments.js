@@ -25,7 +25,6 @@ const add_New_Item_To_wareHouse = async (req,res) => {
     if(!my_Item || !my_wareHoue){
       throw new BadRequestError("please provide valid item and/or WareHouse")
     }
-    
       const start=parseInt(item_set.from_Carton_Number)
       const end=parseInt(item_set.to_Carton_Number)
       //////////////
@@ -46,12 +45,16 @@ const add_New_Item_To_wareHouse = async (req,res) => {
         throw new BadRequestError("please provide valid carton numbers")
       }
       for(let i=start;i<=end;i++){
-       
+       const ItemAlredayExists=await ContainedItemsModel.findOne({item:item_set.item,Carton_Number:i,ContainerId:item_set.ContainerId})
+       if(ItemAlredayExists){
+          throw new BadRequestError(`Item carton number ${i} (and more) already exists Please redo`)
+       }
        await ContainedItemsModel.create({
         item: item_set.item,
         Carton_Number: i,
         StoredAt: item_set.To_WareHouse,
-        itemWentTo: [item_set.To_WareHouse] 
+        itemWentTo: [item_set.To_WareHouse] ,
+        ContainerId:item_set.ContainerId 
     });
      }
      res.status(StatusCodes.OK).json({msg:"multiple Item Adding Succesfull"})
@@ -78,11 +81,17 @@ const add_New_Item_To_wareHouse = async (req,res) => {
     if(!my_Item || !my_wareHoue){
       throw new BadRequestError("please provide valid item and/or WareHouse")
     }
+    const ItemExists=await ContainedItemsModel.findOne({item:item_set.item,Carton_Number:item_set.Carton_number,ContainerId:item_set.ContainerId})
+    if(ItemExists){
+      throw new BadRequestError("Item already exists in storage")
+    }
+    
     await ContainedItemsModel.create({
       item: item_set.item,
       Carton_Number: parseInt(item_set.Carton_number),
       StoredAt: item_set.To_WareHouse,
-      itemWentTo: [item_set.To_WareHouse] // Directly set the array with the initial value
+      itemWentTo: [item_set.To_WareHouse],
+      ContainerId:item_set.ContainerId // Directly set the array with the initial value
   });
   
     console.log("🚀 ==> file: WareHouseAdjustments.js:39 ==> constadd_New_Item_To_wareHouse= ==> item_set.To_WareHouse:", item_set.To_WareHouse);

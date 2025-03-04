@@ -14,7 +14,6 @@ for (const item of addedItems) {
     // Await the results of the asynchronous operations
     const itemDetails = await itemModel.findOne({ _id: item.item });
     const wareHouseDetails = await warehouse.findOne({ _id: item.StoredAt });
-    console.log("🚀 ==> file: getWareHouseAdjustments.js:17 ==> WareHouseAddedItems ==> wareHouseDetails:", wareHouseDetails);
 
 
     // Push the resolved data into resJson

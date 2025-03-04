@@ -16,7 +16,10 @@ const ContainedItems = new Schema({
         type:Date,
         default:Date.now
     }],
-    
+    ContainerId:{
+        type:String,
+        required:[true,"please provide container Id"]
+    },
     itemWentTo:[{
        type:mongoose.Types.ObjectId,
         ref:'WareHouse'
