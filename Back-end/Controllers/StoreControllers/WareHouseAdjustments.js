@@ -107,7 +107,8 @@ const Adjust_wareHouse_Item=async (req,res)=>{
     throw new BadRequestError('Access Denied');
   }
 
-  const {item,From_warehouse,To_WareHouse,Carton_number,from_Carton_Number,to_Carton_Number}=req.body;
+  const {item,From_warehouse,To_WareHouse,Carton_number,from_Carton_Number,to_Carton_Number,ContainerId}=req.body;
+
  const MyCarton_number=Carton_number
 
 
@@ -140,7 +141,7 @@ const Adjust_wareHouse_Item=async (req,res)=>{
 
   for(var i=start;i<=end;i++){
     console.log('here')
-    const item_is_in_my_wareHouse=await ContainedItemsModel.findOne({item:item,Carton_Number:i,StoredAt:my_from_wareHoue})
+    const item_is_in_my_wareHouse=await ContainedItemsModel.findOne({item:item,Carton_Number:i,ContainerId:ContainerId,StoredAt:my_from_wareHoue})
 
 
     if(item_is_in_my_wareHouse==null){
@@ -185,10 +186,16 @@ else{
   const my_item= await itemModel.findOne({_id:item})
   const my_from_wareHoue=await warehouse.findOne({_id:From_warehouse})
   const my_to_wareHoue=await warehouse.findOne({_id:To_WareHouse})
-  const item_is_in_my_wareHouse=await ContainedItemsModel.findOne({item:item,Carton_Number:MyCarton_number,StoredAt:my_from_wareHoue})
+  const item_is_in_my_wareHouse=await ContainedItemsModel.findOne({item:item,Carton_Number:MyCarton_number,ContainerId:ContainerId,StoredAt:my_from_wareHoue._id})
+
+  console.log("🚀 ==> constAdjust_wareHouse_Item= ==> item:item,Carton_Number:MyCarton_number,ContainerId:ContainerId,StoredAt:my_from_wareHoue._id:", 'item:',item,'Carton_Number:',MyCarton_number,"ContainerId:",ContainerId,"StoredAt:",my_from_wareHoue._id);
+
+
+
   if(!my_item || !my_from_wareHoue || !my_to_wareHoue || !item_is_in_my_wareHouse){
     throw new BadRequestError("Please provide Valid values for the wareHouse items")
 }
+
 const WareHouseStoredItems=await ContainedItemsModel.find({StoredAt:To_WareHouse})
 const AllItemsInWareHouse=WareHouseStoredItems.length
 const MyWareHouse=await warehouse.findOne({_id:To_WareHouse});
