@@ -3,7 +3,7 @@ import { useQuery } from "react-query";
 
 
 const fetchData=async (url,id)=>{
- const myurl=`https://seniorproject-inventory-managemnet-system.onrender.com/api/v1/${url}/${id.id}`
+ const myurl=`http://localhost:3002/api/v1/${url}/${id.id}`
  const User_role =  JSON?.parse(global?.window?.localStorage.getItem('INVENTORY_USER_TOKEN') || '{}');
   const authentication_token=`Bearer ${User_role}`
   var config = {

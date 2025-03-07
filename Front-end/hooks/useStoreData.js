@@ -9,7 +9,7 @@ export const useStoreData = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await axios.get('https://seniorproject-inventory-managemnet-system.onrender.com/api/v1/stores/');
+        const { data } = await axios.get('http://localhost:3002/api/v1/stores/');
         const warehousesArray = data?.stores || [];
         console.log("🚀 ==> fetchData ==> data:", data);
 
@@ -21,7 +21,7 @@ export const useStoreData = () => {
           warehousesArray.map(async (warehouse) => {
             try {
               const response = await axios.get(
-                `https://seniorproject-inventory-managemnet-system.onrender.com/api/v1/stores/getAllContainedStoreItemsDetailed/${warehouse._id}`
+                `http://localhost:3002/api/v1/stores/getAllContainedStoreItemsDetailed/${warehouse._id}`
               );
 
               return response.data;
