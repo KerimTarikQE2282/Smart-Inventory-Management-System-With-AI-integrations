@@ -33,7 +33,7 @@ function Sidebar() {
   }
 
   return (
-    <div className='flex-col w-60 min-h-screen bg-slate-900 text-white justify-between fixed sm:flex mr-0'>
+    <div className='flex-col w-60  bg-slate-900 text-white justify-between fixed sm:flex mr-0 min-h-screen overflow-y-auto max-height-screen'>
       {/* Top part */}
       <div className='flex-col'>
         {/* Logo */}
