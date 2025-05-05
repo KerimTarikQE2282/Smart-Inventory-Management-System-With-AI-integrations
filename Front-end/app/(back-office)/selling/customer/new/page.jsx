@@ -9,6 +9,7 @@ import TextInput from "@/Components/FormInputs/TextInput";
 import SubumitButton from "@/Components/FormInputs/SubumitButton";
 import { makePUTApiRequest, makePOSTApiRequest } from '../../../../../actions/StoreGeneralCrudRequests';
 import { useGetDataById } from "@/hooks/useGetDataById";
+import SelectComponent from '@/Components/FormInputs/SelectComponent';
 
 
 function NewCustomer({ initialData, isupdate = false, makePOSTApiRequest, makePUTApiRequest }) {
@@ -46,7 +47,10 @@ function NewCustomer({ initialData, isupdate = false, makePOSTApiRequest, makePU
   }
 
 
-
+  var CustomerStatusValues= [ {
+    title:'active'
+  } ,{ title:'inactive'},
+ { title: 'banned'}]
   return (
     <div>
        <FormHeader title={`${isupdate ? 'Update Customer' : 'New Customer'}`} link={'/dashboard/customers'} />
@@ -100,15 +104,10 @@ function NewCustomer({ initialData, isupdate = false, makePOSTApiRequest, makePU
             register={register}
             errors={errors}
           />
-          <TextInput
-            label="Status"
-            name="status"
-            type="text"
-            width="full"
-            register={register}
-            errors={errors}
-            defaultValue={isupdate ? initialData?.status : 'active'}
-          />
+          
+
+                   <SelectComponent label="Status" name="status"  type="text" width='full' defaultValue={isupdate ? initialData?.status : 'active'} options={CustomerStatusValues}   register={register}  errors={errors}  className='w-full'/>
+          
         </div>
         <SubumitButton title={`${isupdate ? 'Update Customer' : 'New Customer'}`} isLoading={loading} />
       </form>

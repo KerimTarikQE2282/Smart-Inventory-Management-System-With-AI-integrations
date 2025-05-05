@@ -25,18 +25,10 @@ function SalesSideBarComponent(props) {
         link:"/selling/salesorder/new",
         icon:<Pen className='w-4 h-4'/>
       },
-      // {
-      //   name:"Packages",
-      //   link:"/dashboard/inventory",
-      //   icon:<Package className='w-4 h-4'/>
-      // }
+      
     
       ,
-      {
-        name:"Pay Credit",
-        link:"/selling/salesorder/pay",
-        icon:<BadgeDollarSign className='w-4 h-4'/>
-      },
+   
       {
         name:"View All Completed Sales",
         link:"/selling/salesorder/viewallsales",
@@ -46,11 +38,6 @@ function SalesSideBarComponent(props) {
         name:"View All Unpayed Sales",
         link:"/selling/salesorder/viewunpayedsales",
         icon:<BadgeDollarSign className='w-4 h-4'/>
-      },
-   {
-        name:"Unpayed Credits",
-        link:"/selling/unpayedcredits",
-        icon:<CircleOff className='w-4 h-4'/>
       }
     ]
     const InventoryList=inventoryLinks.map((link)=>{

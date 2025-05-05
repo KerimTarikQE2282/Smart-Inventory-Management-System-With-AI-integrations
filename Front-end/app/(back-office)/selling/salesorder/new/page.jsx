@@ -158,7 +158,6 @@ var totalSalesPrice=0;
       errors={errors}
     />
       <SelectComponent label="Customer" name="customer"  type="text" width='full'  options={customer}     register={register}  errors={errors}  className='w-full'/>
-      <NonIdSelectComponent label="Order Status" name="orderStatus"  type="text" width='full'  options={["pending", "delivered"]}     register={register}  errors={errors}  className='w-full'/>
       <NonIdSelectComponent label="Billing Status" name="billingStatus"  type="text" width='full'  options={["unpaid", "paid", "partially paid"]}     register={register}  errors={errors}  className='w-full'/>
       <NonIdSelectComponent label="Payment Method" name="paymentMethod" type="text" width='full'  options={["Cash", "Tele Birr", "Cbe birr", "Other bank transfer" ]}     register={register}  errors={errors}  className='w-full'/>
 
