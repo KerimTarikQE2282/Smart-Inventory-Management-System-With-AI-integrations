@@ -2,9 +2,9 @@ import axios from "axios";
 import {useQuery} from "react-query";
 ;
 
-//http://localhost:3002/api/v1/ online url ++++++++++++++++++++++++++
+//https://smart-inventory-management-system-with-a1f2.onrender.com/api/v1/ online url ++++++++++++++++++++++++++
 const fetchData=(url)=>{
-  const myurl=`http://localhost:3002/api/v1/${url}/`
+  const myurl=`https://smart-inventory-management-system-with-a1f2.onrender.com/api/v1/${url}/`
   const User_role =  JSON?.parse(global?.window?.localStorage.getItem('INVENTORY_USER_TOKEN') || '{}');
   const authentication_token=`Bearer ${User_role}`
   var config = {

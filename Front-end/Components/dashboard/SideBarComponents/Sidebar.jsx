@@ -33,7 +33,7 @@ function Sidebar() {
   }
 
   return (
-    <div className='flex-col w-60  bg-slate-900 text-white justify-between fixed sm:flex mr-0 min-h-screen overflow-y-auto max-height-screen'>
+    <div className='flex-col  bg-slate-900 text-white justify-between fixed sm:flex mr-0 min-h-screen overflow-y-auto max-height-screen w-[16vw] text-xl'>
       {/* Top part */}
       <div className='flex-col'>
         {/* Logo */}
@@ -46,7 +46,7 @@ function Sidebar() {
           <span className='font-semibold text-l'>OAG I.S</span>
         </Link>
         {/* Links */}
-        <div className='flex flex-col gap-3 px-3 py-6'>
+        <div className='flex flex-col gap-10 px-3 py-6'>
           <Link href={"/home"} className={location === "home" ? 'flex items-center space-x-2 bg-blue-500 p-2 rounded-md' : 'flex items-center space-x-2 p-2 rounded-md'}>
             <Home className='w-4 h-4' />
             <span>Home</span>

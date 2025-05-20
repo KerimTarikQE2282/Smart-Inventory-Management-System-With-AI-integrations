@@ -12,7 +12,7 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 function page() {
   const [salesData,setSalesData]=useState([])
   React.useEffect(()=>{
-   axios.get('http://localhost:3002/api/v1/GeneralSales/weeklySales/')
+   axios.get('https://smart-inventory-management-system-with-a1f2.onrender.com/api/v1/GeneralSales/weeklySales/')
    .then((res)=>{
      setSalesData(res.data)
    })

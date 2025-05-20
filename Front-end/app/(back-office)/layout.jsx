@@ -6,7 +6,7 @@ export default function Layout({children}) {
     <div className='flex' suppressHydrationWarning={true}>
      <Sidebar className='bg-slate-900'/>
      
-      <main className=' ml-[15vw] sm:block w-full bg-slate-100 min-h-screen'> 
+      <main className=' m sm:block w-full bg-slate-100 min-h-screen'> 
         <Header/>
         {children}</main>
          </div>
