@@ -76,11 +76,11 @@ app.use(notfound)
 app.use(errorhandler)
 
 
-const port=3002 || process.env.PORT;
+const port=3002 || process.env.DATABASE_URL;
 
 const start=async ()=>{
     try {
-        await connectDB('mongodb://localhost:27017/') 
+        await connectDB(`${process.env.DATABASE_URL}`) 
         app.listen(port,()=>{
             console.log('server running on port ..... ',port) 
         }) 

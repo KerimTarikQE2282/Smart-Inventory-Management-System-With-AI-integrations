@@ -65,8 +65,8 @@ userSchema.pre('save',async function(next){
 })
 
 userSchema.methods.createJWT=function(){
-    return jwt.sign({user:{id:this._id,userId:this._id,role:this.role}},process.env.JWT_SECRET_KEY,{
-        expiresIn:process.env.JWT_LIFETIME
+    return jwt.sign({user:{id:this._id,userId:this._id,role:this.role}},process.env.JWT_SALT,{
+        expiresIn:'1d'
     })
 };
 userSchema.methods.passwordChecker=async function(suppliedPassword){
@@ -75,3 +75,4 @@ userSchema.methods.passwordChecker=async function(suppliedPassword){
 }
 
 module.exports=mongoose.model('User',userSchema);
+
