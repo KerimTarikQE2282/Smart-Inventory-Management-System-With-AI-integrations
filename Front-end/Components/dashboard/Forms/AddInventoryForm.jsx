@@ -37,14 +37,14 @@ function AddinventoryForm({items,WareHouses,makePOSTApiRequest}) {
           <TextInput label="Enter Reference Number" name="ReferenceNumber"  type="text" width=''   register={register}  errors={errors}/>
           <TextInput label="Enter Container ID" name="ContainerId"  type="text" width=''   register={register}  errors={errors}/>
 
-          <div>
+          <div className="flex lg:flex-row flex-col gap-6">
                 <label   className="mr-10">
                     <input
                         type="radio"
                         value="single"
                         checked={selection === 'single'}
                         onChange={(e) => setSelection(e.target.value)}
-                      className="mr-5"
+                      className="mr-7"
                     />
                     Add Single Item
                 </label>
@@ -54,7 +54,7 @@ function AddinventoryForm({items,WareHouses,makePOSTApiRequest}) {
                         value="multiple"
                         checked={selection === 'multiple'}
                         onChange={(e) => setSelection(e.target.value)}
-                        className="mr-5"
+                        className="mr-7"
                     />
                     Add Multiple Items
                 </label>

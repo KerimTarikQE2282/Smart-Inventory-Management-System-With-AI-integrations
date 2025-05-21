@@ -6,7 +6,7 @@ export default function Home() {
   
   return (
    
-   <div className='flex  flex-row '>
+   <div className='lg:flex  lg:flex-row  '>
      <LoginSidebar/>
     <LoginForm/>
    

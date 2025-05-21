@@ -38,15 +38,11 @@ function Sidebar() {
       <div className='flex-col'>
         {/* Logo */}
         <Link href={"#"} className='flex space-x-2 bg-slate-950 items-center py-3 px-2'>
-        <Image
-        className="w-10 h- object-cover"
-        src={Logo}
-        alt={ 'Warehouse Item'}
-      />
-          <span className='font-semibold text-l'>OAG I.S</span>
+       
+         
         </Link>
         {/* Links */}
-        <div className='flex flex-col gap-10 px-3 py-6'>
+        <div className='flex flex-col gap-10 px-3 py-6 mt-[5vh]'>
           <Link href={"/home"} className={location === "home" ? 'flex items-center space-x-2 bg-blue-500 p-2 rounded-md' : 'flex items-center space-x-2 p-2 rounded-md'}>
             <Home className='w-4 h-4' />
             <span>Home</span>

@@ -35,23 +35,23 @@ import { connect } from 'react-redux'
       router.push('/home')
         }},[loading])
   return (
-    <div className='h-screen flex items-center justify-center'>
+    <div className='lg:h-screen flex items-center justify-center lg:mt-0 mt-10 '>
       
     <form 
       onSubmit={handleSubmit(onSubmit)} 
-      className="w-[50vw] h-auto rounded-lg mx-auto my-6 p-10 flex flex-col   items-center"
+      className="lg:w-[50vw] h-auto rounded-lg mx-auto lg:my-6 p-10 flex flex-col   lg:items-center lg:mt-0 mt-[10vh]"
     >
-      <div className='flex flex-col gap-12 '>
-      <h1 className='text-4xl text-center font-bold'>Welcome Back</h1>
+      <div className='flex flex-col lg:gap-12 gap-6 '>
+      <h1 className='text-4xl lg:text-center font-bold'>Welcome Back</h1>
       <LoginTextField label="Email" name="Email" type="text" width='full' register={register} errors={errors} />
       <LoginTextField label="Password" name="Password" type="password" width='full' register={register} errors={errors} />
       {error && <p className='text-red-500 text-center'>{error} please provide valid data</p>}
-      <div className="flex justify-start mb-4">
+      <div className="flex justify-start lg:mb-4">
           <input
             id="rememberMe"
             type="checkbox"
             {...register('rememberMe')}
-            className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+            className="h-4 lg:w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
           />
           <label htmlFor="rememberMe" className="ml-2 text-sm text-gray-600">Remember Me</label>
         </div> 

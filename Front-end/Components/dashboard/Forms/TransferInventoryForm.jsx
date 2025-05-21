@@ -36,7 +36,7 @@ function TransferInventoryForm({items,WareHouses,makePOSTApiRequest}) {
           <TextInput label="Enter Reference Number" name="ReferenceNumber"  type="text" width=''   register={register}  errors={errors}/>
                     <TextInput label="Enter Container ID" name="ContainerId"  type="text" width=''   register={register}  errors={errors}/>
           
-          <div>
+          <div className="flex lg:flex-row flex-col gap-6">
                 <label   className="mr-10">
                     <input
                         type="radio"

@@ -8,8 +8,8 @@ export default function TabelNavBar({ link = '', title = '' }) {
   const router = useRouter()
 
   return (
-    <div className='flex justify-between items-center bg-white py-5 px-16'>
-      <button className='text-2xl'>
+    <div className='flex justify-between items-center bg-white py-5 px-6 lg:px-16'>
+      <button className='lg:text-2xl'>
         All {title}
       </button>
       <div className='flex items-center space-x-10'>

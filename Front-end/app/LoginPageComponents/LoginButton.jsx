@@ -3,12 +3,13 @@ import { LogIn } from 'lucide-react';
 import { FaGoogle } from "react-icons/fa";
 export default function LoginButton({ isLoading, title,isGoogle=false }) {
   return (
-    <div className='flex justify-center w-full'>
+    <div className='flex justify-center '>
       {isLoading ? (
         <button
           disabled
           type="button"
-          className="inline-flex w-[20vw] items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+           
+          className="inline-flex lg:w-[16vw] w-[20vw] items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
           <svg
             aria-hidden="true"
@@ -31,6 +32,7 @@ export default function LoginButton({ isLoading, title,isGoogle=false }) {
         </button>
       ) : (
         <button
+        
           type="submit" //TODO set up google login if allowed
           className="inline-flex w-[20vw] h-14 items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-purple-200 dark:focus:ring-blue-900 hover:bg-blue-800"
         >
