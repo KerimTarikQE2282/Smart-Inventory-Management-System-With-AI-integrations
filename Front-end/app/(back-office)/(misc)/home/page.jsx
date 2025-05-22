@@ -12,9 +12,16 @@ function Page() {
   const [chartData, setChartData] = useState(null);
   const { isLoading, data, isError, error, isFetching } = useGetData('WareHouseAdjustments');
   const PieChartData = data?.data || {};
-
+ const User_role =  JSON?.parse(global?.window?.localStorage.getItem('INVENTORY_USER_TOKEN') || '{}');
+  const authentication_token=`Bearer ${User_role}`
+  var config = {
+    headers: {
+      'Content-Type': 'application/json',
+      'authorization': authentication_token
+    },
+  };
   useEffect(() => {
-    axios.get('https://smart-inventory-management-system-with-a1f2.onrender.com/api/v1/GeneralSales/weeklySales/')
+    axios.get('http://localhost:3002/api/v1/GeneralSales/weeklySales/',config)
       .then((res) => {
         setSalesData(res.data);
       });

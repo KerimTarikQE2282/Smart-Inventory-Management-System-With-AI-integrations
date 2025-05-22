@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 
-const baseUrl = 'https://smart-inventory-management-system-with-a1f2.onrender.com/api/v1/';
+const baseUrl = 'http://localhost:3002/api/v1/';
 
 
 

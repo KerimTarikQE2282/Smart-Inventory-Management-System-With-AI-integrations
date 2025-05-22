@@ -4,7 +4,7 @@ import React from 'react';
 export default function TextInput({ label, name, defaultValue="" , width='full', type = "text", isrequired = true, register, errors  }) {
   return (
     
-      <div className={`${width === "full" ? 'w-full' :  'sm:col-span-2'}`}>
+      <div className={`${width === "full" ? 'w-full' :  'lg:col-span-2 w-full'}`}>
         <label
           htmlFor={name}
           className="block text-sm font-medium leading-6 text-gray-900 mb-2"

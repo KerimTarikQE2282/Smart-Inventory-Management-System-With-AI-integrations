@@ -55,7 +55,7 @@ function Sidebar() {
           {User && (User.role === "admin" || User.role === "sales_personnel") && (
             <SalesSideBarComponent location={location} />
           )}
-           {User && (User.role === "admin" || User.role === "sales_personnel") && (
+           {User && (User.role === "admin" ) && (
             <PurchaseSideBarComponent location={location} />
           )}
           {User && User.role === "admin" && (

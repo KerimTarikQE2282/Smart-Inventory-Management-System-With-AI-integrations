@@ -1,32 +1,31 @@
-const User=require('../models/User/User')
+const User = require('../models/User/User');
 const jwt = require('jsonwebtoken');
 const { UnauthenticatedError } = require('../errors');
 
 const auth = async (req, res, next) => {
-  // check header
-  // const authHeader = req.headers.authorization;
-  // console.log("🚀 ==> file: authentication.js:8 ==> auth ==> authHeader:", authHeader);
+  const authHeader = req.headers.authorization;
 
+  // Check if the header exists and starts with "Bearer "
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    return next(new UnauthenticatedError('Authentication invalid'));
+  }
 
-  // if (!authHeader || !authHeader.startsWith('Bearer')) {
-  //   throw new UnauthenticatedError('Authentication invalid');
-  // }
-  // const token = authHeader.split(' ')[1];
-  // console.log("🚀 ==> file: authentication.js:14 ==> auth ==> token:", token);
-  // try {
-  //   const payload = jwt.verify(token, process.env.JWT_SECRET_KEY);
-  //   req.user = { userId: payload.user.userId,role:'admin' };  
-  //   console.log("🚀 ==> file: authentication.js:19 ==> auth ==> payload:", payload);
+  const token = authHeader.split(' ')[1];
 
-  //   next();
-  // } catch (error) {
-  //   console.log("🚀 ==> file: authentication.js:31 ==> auth ==> error:", error);
+  try {
+    const payload = jwt.verify(token, process.env.JWT_SALT);
 
-  //   throw new UnauthenticatedError('Authentication invalid');
-  // }
-    req.user = { userId: '000000000',role:'admin' };  
-    next();
+    // Attach user info from token to the request
+    req.user = {
+      userId: payload.user.userId,
+      role: payload.user.role,
+    };
 
+    return next();
+  } catch (error) {
+    console.log("🚀 ==> JWT verification failed:", error.message);
+    return next(new UnauthenticatedError('Authentication invalid'));
+  }
 };
 
 module.exports = auth;

@@ -33,7 +33,7 @@ export default function DataTable({ name, columns = [''], resourceTitle ,endpoin
 
   const onSubmit = async (formData) => {
     console.log("🚀 ==> onSubmit ==> data:", formData);
-    const baseUrl = `http://https://smart-inventory-management-system-with-a1f2.onrender.com/api/v1//${name}`;
+    const baseUrl = `http://http://localhost:3002/api/v1//${name}`;
     const url = `${baseUrl}/search`;
     try {
       const res = await axios.post(url, formData);
@@ -89,7 +89,7 @@ export default function DataTable({ name, columns = [''], resourceTitle ,endpoin
                 title !== 'id' ? (<th className="px-6 py-4" key={title}>{title}</th>) : null
               ))}
               <th>Pay</th>
-              <th>Edit</th>
+              
               <th>Delete</th>
             </tr>
           </thead>
@@ -114,17 +114,13 @@ export default function DataTable({ name, columns = [''], resourceTitle ,endpoin
                   </td>
                 ))}
                
-               <td className="py-4  gap-10">
+               <td className="py-4  lg:pb-0 pb-4 px-5 lg:px-0 gap-10">
                   <Link href={`/selling/salesorder/pay/${mydata.orderNumber}`} className='font-medium text-blue item-center space-x-2 text-green-500'>
                     <HandCoins className='text'/>
                   </Link>
                 </td>
 
-                <td className="py-4 flex gap-10">
-                  <Link href={`/selling/pay/${mydata._id}`} className='font-medium text-blue item-center space-x-2 text-blue-500'>
-                    <Pencil className='text'/>
-                  </Link>
-                </td>
+                
                 
                 <td>
                   <DeleteBtn resourceTitle={resourceTitle} id={mydata?._id}/>

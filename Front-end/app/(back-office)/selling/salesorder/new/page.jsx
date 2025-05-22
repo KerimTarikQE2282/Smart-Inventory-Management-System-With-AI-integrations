@@ -148,7 +148,7 @@ var totalSalesPrice=0;
     <div className='relative'>
        <FormHeader title={`${isupdate ? 'Update Customer' : 'New Customer'}`} link={'/dashboard/customers'} />
        <form onSubmit={handleSubmit(onSubmit)} className='w-full max-w-4xl p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700 mx-auto my-3'>
-  <div className='grid gap-4 sm:grid-cols-2 sm:gap-6'>
+  <div className='lg:grid gap-4 '>
     <TextInput
       label="Order Number"
       name="orderNumber"
@@ -170,7 +170,7 @@ var totalSalesPrice=0;
       name="PayedAmount"
       isrequired={false}
       type="number"  // Allows user to select date and time
-      width="not-full"
+      width="full"
       register={register}
       errors={errors}
       defaultValue={isupdate ? initialData?.dateCreated : new Date().toISOString().slice(0,16)}
@@ -184,12 +184,12 @@ var totalSalesPrice=0;
    {itemsSold}
    </div>
    <br/>
-   <div className='flex items-center space-x-10 flex-row'>
-   <button className="p-1 bg-blue-600 rounded-md flex items-center space-x-2 px-3  w-[5vw]" onClick={(e) => { e.preventDefault(); setItemNumber(itemNumber + 1); }}>
+   <div className='flex lg:items-center space-x-10 flex-row'>
+   <button className="p-1 bg-blue-600 rounded-md flex items-center space-x-2 px-3  lg:w-[5vw] w-[25vw]" onClick={(e) => { e.preventDefault(); setItemNumber(itemNumber + 1); }}>
   <Plus className="text-white w-4 h-4" />
   <span className='text-white'>More</span>
 </button>
-<button className="p-1 bg-red-600 rounded-md flex items-center space-x-2 px-3  w-[5vw]" onClick={(e) => { e.preventDefault(); setItemNumber(itemNumber - 1); }}>
+<button className="p-1 bg-red-600 rounded-md flex items-center space-x-2 px-3  lg:w-[5vw] w-[25vw]" onClick={(e) => { e.preventDefault(); setItemNumber(itemNumber - 1); }}>
   <Minus className="text-white w-4 h-4" />
   <span className='text-white'>Less</span>
 </button>
