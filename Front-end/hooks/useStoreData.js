@@ -16,7 +16,7 @@ export const useStoreData = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await axios.get('http://localhost:3002/api/v1/stores/',config);
+        const { data } = await axios.get('https://smart-inventory-management-system-with-a1f2.onrender.com/api/v1/stores/',config);
         const warehousesArray = data?.stores || [];
         console.log("🚀 ==> fetchData ==> data:", data);
 
@@ -28,7 +28,7 @@ export const useStoreData = () => {
           warehousesArray.map(async (warehouse) => {
             try {
               const response = await axios.get(
-                `http://localhost:3002/api/v1/stores/getAllContainedStoreItemsDetailed/${warehouse._id}`
+                `https://smart-inventory-management-system-with-a1f2.onrender.com/api/v1/stores/getAllContainedStoreItemsDetailed/${warehouse._id}`
               );
 
               return response.data;

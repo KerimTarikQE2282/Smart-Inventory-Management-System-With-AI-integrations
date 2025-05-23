@@ -20,7 +20,7 @@ function page() {
     },
   };
   React.useEffect(()=>{
-   axios.get('http://localhost:3002/api/v1/GeneralSales/weeklySales/',config)
+   axios.get('https://smart-inventory-management-system-with-a1f2.onrender.com/api/v1/GeneralSales/weeklySales/',config)
    .then((res)=>{
      setSalesData(res.data)
    })
