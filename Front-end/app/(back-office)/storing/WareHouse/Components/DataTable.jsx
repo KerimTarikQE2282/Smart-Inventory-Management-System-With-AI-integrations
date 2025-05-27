@@ -38,7 +38,7 @@ export default function DataTable({ name, columns = [''], resourceTitle }) {
     try {
       const res = await axios.post(url, formData);
       setData(res.data); // Update the state with new data
-      console.log("🚀 ==> Response Data:", res.data);
+      console.log("🚀 ==> Response Data:table", res.data);
     } catch (error) {
       console.log("🚀 ==> error:", error);
       toast.error(error.response?.data?.message || "Something went wrong");

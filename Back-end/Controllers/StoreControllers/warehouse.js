@@ -183,6 +183,7 @@ const getAllContainedWareHouseItemsDetailed = async (req, res) => {
         const itemName = await ItemModel.findById(item?.item);
         return {
           Carton_Number: item?.Carton_Number,
+          Container_Id:item?.ContainerId,
           itemName: itemName?.title || 'Unknown Item'  // Default to 'Unknown Item' if title is not found
         };
       })

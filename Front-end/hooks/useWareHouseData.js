@@ -23,7 +23,7 @@ export const useWarehouseData = () => {
         console.log("🚀 ==> fetchData ==> warehousesArray:", warehousesArray);
 
 
-
+ff
         const warehouseDetailsArray = await Promise.all(
           warehousesArray.map(async (warehouse) => {
             try {
